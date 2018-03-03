@@ -166,6 +166,8 @@ THEME SUPPORT
 
 // Adding WP 3+ Functions & Theme Support
 function bones_theme_support() {
+  // タイトルタグを出力する WP4.1+
+  add_theme_support( 'title-tag' );
 
   // wp thumbnails (sizes handled in functions.php)
   add_theme_support( 'post-thumbnails' );
