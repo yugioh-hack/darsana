@@ -143,16 +143,17 @@ function bones_scripts_and_styles() {
 
     //adding scripts file in the footer
     wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
-  // jQueryをcdnから読み込む
-  if(!is_admin()) {
-    wp_deregister_script('jquery'); // 既存のjQueryを排除
-    if( $is_IE ) {
-      wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', array(), '',true);
+
+    // jQueryをcdnから読み込む
+    if(!is_admin()) {
+      wp_deregister_script('jquery'); // 既存のjQueryを排除
+      if( $is_IE ) {
+        wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', array(), '',true);
+      }
+      else {
+        wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), '',true);
+      }
     }
-    else {
-      wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), '',true);
-    }
-  }
     // enqueue styles and scripts
     wp_enqueue_script( 'bones-modernizr' );
     //wp_enqueue_style( 'bones-stylesheet' );
