@@ -45,9 +45,9 @@ function bones_head_cleanup() {
   // WP version
   remove_action( 'wp_head', 'wp_generator' );
   // remove WP version from css
-  add_filter( 'style_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
+  //add_filter( 'style_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
   // remove Wp version from scripts
-  add_filter( 'script_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
+  //add_filter( 'script_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
 
 } /* end bones head cleanup */
 
@@ -125,11 +125,13 @@ function bones_scripts_and_styles() {
 
   if (!is_admin()) {
 
+    $customcssver = date("YmdHi", filemtime( get_stylesheet_directory(). '/library/css/shard5.css') );
     // modernizr (without media query polyfill)
     wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 
     // register main stylesheet
-    wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+    //wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+    wp_register_style( 'shard-stylesheet', get_stylesheet_directory_uri() . '/library/css/shard5.css', array(), $shardcssver, 'all' );
 
     // ie-only style sheet
     wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
@@ -141,10 +143,20 @@ function bones_scripts_and_styles() {
 
     //adding scripts file in the footer
     wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
-
+  // jQueryをcdnから読み込む
+  if(!is_admin()) {
+    wp_deregister_script('jquery'); // 既存のjQueryを排除
+    if( $is_IE ) {
+      wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', array(), '',true);
+    }
+    else {
+      wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), '',true);
+    }
+  }
     // enqueue styles and scripts
     wp_enqueue_script( 'bones-modernizr' );
-    wp_enqueue_style( 'bones-stylesheet' );
+    //wp_enqueue_style( 'bones-stylesheet' );
+    wp_enqueue_style( 'shard-stylesheet' );
     wp_enqueue_style( 'bones-ie-only' );
 
     $wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
