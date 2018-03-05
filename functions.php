@@ -11,6 +11,9 @@ sidebars, comments, etc.
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
 
+// パンくずリスト
+require_once( 'library/breadcrumb.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
