@@ -51,6 +51,7 @@ function bones_head_cleanup() {
 
 } /* end bones head cleanup */
 
+
   // Add a page number if necessary:
   if ( $paged >= 2 || $page >= 2 ) {
     $title .= " {$sep} " . sprintf( __( 'Page %s', 'dbt' ), max( $paged, $page ) );
@@ -106,7 +107,7 @@ function bones_scripts_and_styles() {
 
     // register main stylesheet
     //wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
-    wp_register_style( 'shard-stylesheet', get_stylesheet_directory_uri() . '/library/css/shard5.css', array(), $shardcssver, 'all' );
+    wp_register_style( 'shard-stylesheet', get_stylesheet_directory_uri() . '/library/css/shard5.css', array(), $customcssver, 'all' );
 
     // ie-only style sheet
     wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
@@ -211,6 +212,23 @@ function bones_theme_support() {
     'search-form',
     'comment-form'
   ) );
+
+  add_theme_support( 'custom-header',array(
+    'default-image' => '',
+    'random-default' => false,
+    'width' => 0,
+    'height' => 0,
+    'flex-height' => false,
+    'flex-width' => false,
+    'default-text-color' => '',
+    'header-text' => true,
+    'uploads' => true,
+    'wp-head-callback' => '',
+    'admin-head-callback' => '',
+    'admin-preview-callback' => '',
+    'video' => false,
+    'video-active-callback' => 'is_front_page',
+  ));
 
 } /* end bones theme support */
 
