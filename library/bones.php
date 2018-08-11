@@ -58,8 +58,6 @@ function bones_head_cleanup() {
 
   return $title;
 
-} // end better title
-
 // remove WP version from RSS
 function bones_rss_version() { return ''; }
 
