@@ -33,7 +33,7 @@
 
                 </header> <?php // end article header ?>
 
-                <section class="entry-content cf" itemprop="articleBody">
+                <section class="content" itemprop="articleBody">
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();

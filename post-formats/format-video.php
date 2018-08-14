@@ -17,7 +17,7 @@
 
                 </header> <?php // end article header ?>
 
-                <section class="entry-content cf" itemprop="description">
+                <section class="content" itemprop="description">
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();
