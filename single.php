@@ -4,7 +4,7 @@
 
         <div class="columns is-centered">
 
-          <main id="main" class="column is-7" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+          <main id="main" class="column is-7" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 

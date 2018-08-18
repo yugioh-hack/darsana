@@ -4,7 +4,7 @@
 
       <div id="content" class="columns is-centered">
 
-            <main id="main" class="column is-7" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+            <main id="main" class="column is-7" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -18,7 +18,7 @@
                                        /* the time the post was published */
                                        '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
                                        /* the author of the post */
-                                       '<span class="by">'.__( 'by', 'bonestheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
+                                       '<span class="by">'.__( 'by', 'bonestheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="https://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
                                   ); ?>
                   </p>
 

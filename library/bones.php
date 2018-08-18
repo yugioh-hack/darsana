@@ -295,9 +295,6 @@ function bones_page_navi() {
 }
 
 function custom_page_navi() {
-  echo '<div class="columns">';
-  echo '<div class="column">';
-  echo '<nav class="pagination is-centered">';
 
   global $wp_query;
   $bignum = PHP_INT_MAX;
@@ -312,6 +309,11 @@ function custom_page_navi() {
       'next_text' => '&raquo;',
     )
   );
+
+  echo '<div class="columns">';
+  echo '<div class="column">';
+  echo '<nav class="pagination is-centered">';
+  echo '<h2 class="screen-reader-text">Pagination</h2>';
 
   if(!empty( $pagination )):
     echo '<ul class="pagination-list">';
