@@ -45,7 +45,8 @@
 
               <?php endwhile; ?>
 
-                  <?php bones_page_navi(); ?>
+                  <?php //bones_page_navi(); ?>
+                  <?php custom_page_navi(); ?>
 
               <?php else : ?>
 

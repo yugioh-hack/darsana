@@ -120,6 +120,9 @@ function bones_scripts_and_styles() {
     //adding scripts file in the footer
     wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
+    wp_register_script( 'googlePlus', '//apis.google.com/js/plusone.js',array(),'', true );
+
+    //https://apis.google.com/js/platform.js
     // jQueryをcdnから読み込む
     if(!is_admin()) {
       wp_deregister_script('jquery'); // 既存のjQueryを排除
@@ -132,6 +135,7 @@ function bones_scripts_and_styles() {
     }
     // enqueue styles and scripts
     wp_enqueue_script( 'bones-modernizr' );
+    wp_enqueue_script( 'googlePlus' );
     //wp_enqueue_style( 'bones-stylesheet' );
     wp_enqueue_style( 'shard-stylesheet' );
     wp_enqueue_style( 'bones-ie-only' );
@@ -275,6 +279,7 @@ function bones_page_navi() {
   if ( $wp_query->max_num_pages <= 1 )
     return;
   echo '<nav class="pagination">';
+  echo '<h2 class="screen-reader-text">Pagination</h2>';
   echo paginate_links( array(
     'base'         => str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
     'format'       => '',
@@ -287,7 +292,44 @@ function bones_page_navi() {
     'mid_size'     => 3
   ) );
   echo '</nav>';
-} /* end page navi */
+}
+
+function custom_page_navi() {
+  echo '<div class="columns">';
+  echo '<div class="column">';
+  echo '<nav class="pagination is-centered">';
+
+  global $wp_query;
+  $bignum = PHP_INT_MAX;
+  $current = max(1,absint(get_query_var('paged')) );
+  $pagination = paginate_links( array(
+      'base'   => str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
+      'format' => '?paged=%#%',
+      'current' => $current,
+      'total'   => $wp_query->max_num_pages,
+      'type'    => 'array',
+      'prev_text' => '&laquo;',
+      'next_text' => '&raquo;',
+    )
+  );
+
+  if(!empty( $pagination )):
+    echo '<ul class="pagination-list">';
+    foreach($pagination as $key => $page_link) {
+      echo '<li class="pagination-link';
+      if(strpos($page_link,'current') !== false)
+        echo ' active';
+      echo '">'.$page_link.'</li>';
+    }
+    echo '</ul>';
+  endif;
+
+  echo '</nav>';
+  echo '</div>';
+  echo '</div>';
+}
+
+/* end page navi */
 
 /*********************
 RANDOM CLEANUP ITEMS
