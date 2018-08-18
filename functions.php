@@ -14,6 +14,9 @@ require_once( 'library/bones.php' );
 // パンくずリスト
 require_once( 'library/breadcrumb.php' );
 
+// wpautopの無効化など
+require_once( 'library/autop_functions.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
