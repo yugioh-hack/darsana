@@ -17,6 +17,9 @@ require_once( 'library/breadcrumb.php' );
 // wpautopの無効化など
 require_once( 'library/autop_functions.php' );
 
+// img-captionの余計なスタイルを削除
+require_once( 'library/img-caption.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
