@@ -1,6 +1,6 @@
 <?php
 // パンくずリストを出力する
-function breadcrumnb($divOption = array("class" => "breadcrumb")) {
+function breadcrumb($divOption = array("class" => "breadcrumb")) {
   global $post;
   $str ='';
   $ulOption = array("class" => "breadcrumb__list");
@@ -22,7 +22,7 @@ function breadcrumnb($divOption = array("class" => "breadcrumb")) {
     foreach($liOption as $attrName => $attrValue) {
       $liAttribute .= sprintf(' %1$s="%2$s" ', $attrName, $attrValue);
     }
-    $navTitle = '<h2 class="screen-readable-text">BreadCrumbs</h2>';
+    $navTitle = '<h2 class="screen-reader-text">BreadCrumbs</h2>';
 
     $str .= sprintf(
       '<nav %1$s>%2$s<ul %3$s itemscope itemtype="%4$s"><li %5$s itemscope itemtype="%6$s" ><a itemprop="url" href="%7$s"><span itemprop="url">Home</span></a><meta itemprop="position" content="%8$d" /></li>',
@@ -70,7 +70,7 @@ function breadcrumnb($divOption = array("class" => "breadcrumb")) {
         '<li %1$s itemscope itemtype="%2$s"><span itemprop="name">%3$s</span><meta itemprop="position" content="%4$d" /></li>',
         $liAttribute,
         esc_html( $schemaList ),
-        esc_html( trim_title( $post->post_title ) ),//30文字制限
+        esc_html( mb_substr( $post->post_title,0,30 ) ),//30文字制限
         ++$position
       );
 
