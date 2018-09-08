@@ -41,7 +41,7 @@
 
       <header role="banner" itemscope itemtype="https://schema.org/WPHeader">
 
-        <nav class="navbar has-shadow is-spaced is-primary" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <nav class="navbar is-spaced is-primary section" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
           <div class="navbar-brand">
             <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
             <?php if(is_home()): ?>

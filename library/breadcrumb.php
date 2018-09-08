@@ -1,10 +1,11 @@
 <?php
 // パンくずリストを出力する
-function breadcrumb($divOption = array("class" => "breadcrumb")) {
+function breadcrumb($divOption = array("class" => "breadcrumbs")) {
   global $post;
   $str ='';
   $ulOption = array("class" => "breadcrumb__list");
   $liOption = array("class" => "breadcrumb__item", "itemprop" => "itemListElement");
+  $currentOption = 'class="breadcrumb__current"';
   if(!is_home() && !is_admin()) {
     $schemaBread = 'https://schema.org/BreadcrumbList';
     $schemaList  = 'https://schema.org/ListItem';
@@ -67,9 +68,10 @@ function breadcrumb($divOption = array("class" => "breadcrumb")) {
       );
 
       $str .= sprintf(
-        '<li %1$s itemscope itemtype="%2$s"><span itemprop="name">%3$s</span><meta itemprop="position" content="%4$d" /></li>',
+        '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span><meta itemprop="position" content="%5$d" /></li>',
         $liAttribute,
         esc_html( $schemaList ),
+        $currentOption,
         esc_html( mb_substr( $post->post_title,0,30 ) ),//30文字制限
         ++$position
       );
@@ -94,8 +96,9 @@ function breadcrumb($divOption = array("class" => "breadcrumb")) {
         // $str .= $strCat;
       }
       $str .= sprintf(
-        '<li %1$s itemscope itemtype=%2$s><span itemprop="name">%3$s</span><meta itemprop="position" content="%4$d" /></li>',
+        '<li %1$s itemscope itemtype=%2$s><span %3$s itemprop="name">%4$s</span><meta itemprop="position" content="%5$d" /></li>',
         $liAttribute,
+        $currentOption,
         esc_html( $schemaList ),
         esc_html( $cat -> name ),
         ++$position
@@ -117,18 +120,20 @@ function breadcrumb($divOption = array("class" => "breadcrumb")) {
         }
       }
       $str .= sprintf(
-        '<li %1$s itemscope itemtype="%2$s"><span itemprop="name">%3$s</span><meta itemprop="position" content="%4$d" /></li>',
+        '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span><meta itemprop="position" content="%5$d" /></li>',
         $liAttribute,
         esc_html( $schemaList ),
+        $currentOption,
         esc_html( $post->post_title ),
         ++$position
         );
     }
     elseif(is_tag()) {
       $str .= sprintf(
-          '<li %1$s itemscope itemtype="%2$s"><span itemprop="name">%3$s</span></li>',
+          '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span></li>',
           $liAttribute,
           esc_url( $schemaList ),
+          $currentOption,
           esc_html(single_tag_title('',false))//取得するだけなのでfalseをつける
         );
     }
@@ -150,9 +155,10 @@ function breadcrumb($divOption = array("class" => "breadcrumb")) {
           esc_html( get_query_var( 'monthnum' ).'月' )
         );
         $str .= sprintf(
-          '<li %1$s itemscope itemtype="%2$s"><span itemprop="name">%3$s</span></li>',
+          '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span></li>',
           $liAttribute,
           esc_url( $schemaList ),
+          $currentOption,
           esc_html( get_query_var( 'day' ).'日' )
         );
       }

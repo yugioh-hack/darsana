@@ -1,11 +1,13 @@
 <?php get_header(); ?>
-
-      <section class="section">
-
+    <div class="breadcrumb">
+      <div class="container breadcrumb__inner">
+        <?php breadcrumb(); ?>
+      </div>
+    </div>
+      <section class="container section">
         <div class="columns is-centered">
 
-          <div class="column is-7">
-            <?php breadcrumb(); ?>
+          <div class="column is-8">
             <main id="main" class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
