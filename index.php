@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-    <section class="section">
+    <section class="container section">
 
       <div id="content" class="columns is-centered">
 
-            <main id="main" class="column is-7" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
+            <main id="main" class="column is-8" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
