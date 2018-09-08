@@ -5,7 +5,6 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
   $str ='';
   $ulOption = array("class" => "breadcrumb__list");
   $liOption = array("class" => "breadcrumb__item", "itemprop" => "itemListElement");
-  $currentOption = 'class="breadcrumb__current"';
   if(!is_home() && !is_admin()) {
     $schemaBread = 'https://schema.org/BreadcrumbList';
     $schemaList  = 'https://schema.org/ListItem';
@@ -24,6 +23,8 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
       $liAttribute .= sprintf(' %1$s="%2$s" ', $attrName, $attrValue);
     }
     $navTitle = '<h2 class="screen-reader-text">BreadCrumbs</h2>';
+
+    $currentOption = 'class="breadcrumb__current"';
 
     $str .= sprintf(
       '<nav %1$s>%2$s<ul %3$s itemscope itemtype="%4$s"><li %5$s itemscope itemtype="%6$s" ><a itemprop="url" href="%7$s"><span itemprop="url">Home</span></a><meta itemprop="position" content="%8$d" /></li>',
@@ -98,8 +99,8 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
       $str .= sprintf(
         '<li %1$s itemscope itemtype=%2$s><span %3$s itemprop="name">%4$s</span><meta itemprop="position" content="%5$d" /></li>',
         $liAttribute,
-        $currentOption,
         esc_html( $schemaList ),
+        $currentOption,
         esc_html( $cat -> name ),
         ++$position
       );
@@ -138,7 +139,7 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
         );
     }
     elseif(is_date()) {
-      if(get_query_var( 'day' ) !=0) {
+      if(is_day() !=0) {
         // 年を出力
         $str .= sprintf(
           '<li %1$s itemscope itemtype="%2$s"><a itemprop="url" href="%3$s"><span itemprop="name">%4$s</span></a></li>',
@@ -160,6 +161,33 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
           esc_url( $schemaList ),
           $currentOption,
           esc_html( get_query_var( 'day' ).'日' )
+        );
+      }
+      elseif(is_month() !=0) {
+        // 月を出力
+        $str .= sprintf(
+          '<li %1$s itemscope itemtype="%2$s"><a itemprop="url" href="%3$s"><span itemprop="name">%4$s</span></a></li>',
+          $liAttribute,
+          esc_url( $schemaList ),
+          esc_url( get_year_link( get_query_var( 'year' ) ) ),
+          esc_html( get_query_var( 'year' ).'年' )
+        );
+        $str .= sprintf(
+          '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span></li>',
+          $liAttribute,
+          esc_url( $schemaList ),
+          $currentOption,
+          esc_html( get_query_var( 'monthnum' ).'月' )
+        );
+      }
+      elseif(is_year() !=0) {
+        // 年を出力
+        $str .= sprintf(
+          '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span></li>',
+          $liAttribute,
+          esc_url( $schemaList ),
+          $currentOption,
+          esc_html( get_query_var( 'year' ).'年' )
         );
       }
     }
