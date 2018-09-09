@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <section class="container section">
+    <section class="container section index__mainSection">
 
       <div class="columns is-centered">
 
@@ -24,7 +24,7 @@
 
                 <?php //</header> ?>
 
-                <section class="content singlePost__content">
+                <section class="content index__loopSection">
                   <?php //the_content(); ?>
                   <?php the_excerpt(); ?>
                 </section>
