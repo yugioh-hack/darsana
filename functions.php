@@ -20,6 +20,9 @@ require_once( 'library/autop_functions.php' );
 // img-captionの余計なスタイルを削除
 require_once( 'library/img-caption.php' );
 
+// snsのシャア数
+require_once( 'library/sns_share.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
