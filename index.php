@@ -8,7 +8,7 @@
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class( 'index__article' ); ?> role="article">
+              <article id="post-<?php the_ID(); ?>" <?php post_class( 'index__article box' ); ?> role="article">
 
                 <?php //<header class="index__header"> ?>
 
@@ -70,9 +70,8 @@
 
           <?php get_sidebar(); ?>
 
-        </section>
+    </div>
 
-      </div>
-
+  </section>
 
 <?php get_footer(); ?>
