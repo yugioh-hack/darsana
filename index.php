@@ -10,22 +10,23 @@
 
               <article id="post-<?php the_ID(); ?>" <?php post_class( 'index__article' ); ?> role="article">
 
-                <header class="index__header">
+                <?php //<header class="index__header"> ?>
 
-                  <h1 class="index__title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+                  <h1 class="index__title">
+                    <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+                      <?php the_title(); ?>
+                    </a>
+                  </h1>
                   <p class="byline entry-meta vcard">
-                                                                        <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
-                                       /* the time the post was published */
-                                       '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-                                       /* the author of the post */
-                                       '<span class="by">'.__( 'by', 'bonestheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="https://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-                                  ); ?>
+                    <?php /* the time the post was published */
+                     printf ('<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>'); ?>
                   </p>
 
-                </header>
+                <?php //</header> ?>
 
-                <section class="content">
-                  <?php the_content(); ?>
+                <section class="content singlePost__content">
+                  <?php //the_content(); ?>
+                  <?php the_excerpt(); ?>
                 </section>
 
                 <footer class="index__footer">
