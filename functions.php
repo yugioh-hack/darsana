@@ -254,4 +254,16 @@ function bones_fonts() {
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
+/*********************
+ Limit Title Length
+*********************/
+function limit_title_length($title) {
+  $max = 40;
+  if( mb_strlen($title) > $max && !(is_single()) && !(is_page())) {
+    $title = mb_substr( $title, 0, $max,"UTF-8" ) . "...";
+  }
+  return $title;
+}
+add_filter( 'the_title', 'limit_title_length');
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>
