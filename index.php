@@ -2,7 +2,7 @@
 
     <section class="container section">
 
-      <div id="content" class="columns is-centered">
+      <div class="columns is-centered">
 
             <main id="main" class="column is-8" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
