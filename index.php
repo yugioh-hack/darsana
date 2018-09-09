@@ -8,11 +8,11 @@
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+              <article id="post-<?php the_ID(); ?>" <?php post_class( 'index__article' ); ?> role="article">
 
-                <header class="article-header">
+                <header class="index__header">
 
-                  <h1 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+                  <h1 class="index__title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
                   <p class="byline entry-meta vcard">
                                                                         <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
                                        /* the time the post was published */
@@ -28,7 +28,7 @@
                   <?php the_content(); ?>
                 </section>
 
-                <footer class="article-footer cf">
+                <footer class="index__footer">
                   <p class="footer-comment-count">
                     <?php comments_number( __( '<span>No</span> Comments', 'bonestheme' ), __( '<span>One</span> Comment', 'bonestheme' ), __( '<span>%</span> Comments', 'bonestheme' ) );?>
                   </p>
