@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <section class="container section index__mainSection">
+    <section class="container section index--mainSection">
 
       <div class="columns is-centered">
 
@@ -8,28 +8,28 @@
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class( 'index__article box' ); ?> role="article">
+              <article id="post-<?php the_ID(); ?>" <?php post_class( 'index--article box' ); ?> role="article">
 
-                <?php //<header class="index__header"> ?>
+                <?php //<header class="index--header"> ?>
 
-                  <h1 class="index__title">
+                  <h1 class="index--title">
                     <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
                       <?php the_title(); ?>
                     </a>
                   </h1>
-                  <p class="byline entry-meta vcard">
+                  <p class="common--byline--datetime">
                     <?php /* the time the post was published */
-                     printf ('<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>'); ?>
+                     printf ('<time class="common--byline--datetime__updated" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>'); ?>
                   </p>
 
                 <?php //</header> ?>
 
-                <section class="content index__loopSection">
+                <section class="content index--loopSection">
                   <?php //the_content(); ?>
                   <?php the_excerpt(); ?>
                 </section>
 
-                <footer class="index__footer">
+                <footer class="index--footer">
                   <p class="footer-comment-count">
                     <?php comments_number( __( '<span>No</span> Comments', 'bonestheme' ), __( '<span>One</span> Comment', 'bonestheme' ), __( '<span>%</span> Comments', 'bonestheme' ) );?>
                   </p>

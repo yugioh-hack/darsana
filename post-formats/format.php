@@ -14,11 +14,11 @@
                 */
               ?>
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class('singlePost__article'); ?> role="article" itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
+              <article id="post-<?php the_ID(); ?>" <?php post_class('singlePost--article'); ?> role="article" itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
 
-                <header class="singlePost__header">
+                <header class="singlePost--header">
 
-                  <h1 class="singlePost__title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
+                  <h1 class="singlePost--title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
 
                   <p class="byline entry-meta vcard">
 
@@ -33,7 +33,7 @@
 
                 </header> <?php // end article header ?>
 
-                <section class="content singlePost__content" itemprop="articleBody">
+                <section class="content singlePost--content" itemprop="articleBody">
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();
@@ -59,7 +59,7 @@
                   ?>
                 </section> <?php // end article section ?>
 
-                <footer class="singlePost__footer">
+                <footer class="singlePost--footer">
 
                   <?php printf( __( 'filed under', 'bonestheme' ).': %1$s', get_the_category_list(', ') ); ?>
 
