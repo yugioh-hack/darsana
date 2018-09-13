@@ -23,6 +23,9 @@ require_once( 'library/img-caption.php' );
 // snsのシャア数
 require_once( 'library/sns_share.php' );
 
+// limit category select
+require_once( 'library/limit_category_select.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
