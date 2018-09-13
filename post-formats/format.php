@@ -59,9 +59,23 @@
 
                 <footer class="singlePost--footer">
 
-                  <?php printf( __( 'filed under', 'bonestheme' ).': %1$s', get_the_category_list(', ') ); ?>
+                <?php
+                    $singlePostTagList  = '<p class="singlePost--footer__info">';
+                    $singlePostTagList .= '<p class="singlePost--footer__tagName">%1$s</p>';
+                    $singlePostTagList .= '<p class="singlePost--footer__tags">%2$s</p>';
+                    $singlePostTagList .= '</p>';
 
-                  <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+                    $catListName = "Categories:";
+                    $catLists = get_the_category_list(',');
+
+                    $tagListName = "Tags:";
+                    $tagLists = get_the_tag_list('',',','');
+
+                    printf( $singlePostTagList,$catListName,$catLists);
+                    printf( $singlePostTagList,$tagListName,$tagLists);
+                    ?>
+
+                  <?php //the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
 
                 </footer> <?php // end article footer ?>
 
