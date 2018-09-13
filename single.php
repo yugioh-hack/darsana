@@ -4,7 +4,7 @@
         <?php breadcrumb(); ?>
       </div>
     </div>
-      <section class="container section">
+      <section class="container section singleSection">
         <div class="columns is-centered">
 
           <div class="column is-8">
