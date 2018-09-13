@@ -25,7 +25,6 @@
             <meta name="theme-color" content="#121212">
 
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
     <?php // wordpress head functions ?>
     <?php wp_head(); ?>
     <?php // end of wordpress head ?>
