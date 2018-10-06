@@ -36,8 +36,6 @@
 
   <body <?php body_class('common-wrapper'); ?> itemscope itemtype="https://schema.org/WebPage">
 
-  <?php //<div class="container"> ?>
-
       <header role="banner" itemscope itemtype="https://schema.org/WPHeader">
 
         <nav class="navbar is-spaced is-primary section" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
