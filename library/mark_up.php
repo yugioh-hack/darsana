@@ -73,7 +73,7 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
 
         // ポストが存在するならば
         if($tax_posts):
-          echo '<section><h3 id="' . esc_html($taxonomy->slug) . '"><a href="'. $url_taxonomy .'">' . esc_html($taxonomy->name) .'</a>
+          echo '<section class="column is-4"><h3 id="' . esc_html($taxonomy->slug) . '"><a href="'. $url_taxonomy .'">' . esc_html($taxonomy->name) .'</a>
                 </h3> <ul>';
             foreach($tax_posts as $tax_post) {
               echo '<li><a href="'. get_permalink($tax_post->ID).'">'. get_the_title($tax_post->ID).'</a></li>';

@@ -22,7 +22,7 @@
 
             <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class(columns); ?> role="article" itemscope itemtype="https://schema.org/BlogPosting">
+              <article id="post-<?php the_ID(); ?>" <?php post_class('columns is-desktop'); ?> role="article" itemscope itemtype="https://schema.org/BlogPosting">
                 <?php shard_get_archive_custom_posts(); ?>
 
               </article>
