@@ -34,7 +34,7 @@
 
   </head>
 
-  <body <?php body_class('site-wrapper'); ?> itemscope itemtype="https://schema.org/WebPage">
+  <body <?php body_class('common-wrapper'); ?> itemscope itemtype="https://schema.org/WebPage">
 
   <?php //<div class="container"> ?>
 
