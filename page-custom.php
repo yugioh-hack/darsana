@@ -1,6 +1,6 @@
 <?php
 /*
- Template Name: FrontPage
+ Template Name: Page Custom
  *
  * This is your custom page template. You can create as many of these as you need.
  * Simply name is "page-whatever.php" and in add the "Template Name" title at the
