@@ -1,6 +1,6 @@
 <?php
 /*
- Template Name: FrontPage
+ Template Name: Custom Page Example
  *
  * This is your custom page template. You can create as many of these as you need.
  * Simply name is "page-whatever.php" and in add the "Template Name" title at the
@@ -18,7 +18,7 @@
     <section class="container section singleSection">
       <div class="columns is-centered" id="content">
 
-        <div class="column" id="content-inner">
+        <div class="column is-8" id="content-inner">
 
             <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
@@ -92,7 +92,7 @@
 
             </main>
 
-            <?php //get_sidebar(); ?>
+            <?php get_sidebar(); ?>
 
         </div> <!-- #content-inner -->
 
