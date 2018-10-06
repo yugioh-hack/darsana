@@ -26,6 +26,9 @@ require_once( 'library/sns_share.php' );
 // limit category select
 require_once( 'library/limit_category_select.php' );
 
+// markup
+require_once( 'library/mark_up.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
