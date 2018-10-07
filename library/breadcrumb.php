@@ -109,7 +109,7 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
         $str .= sprintf(
           '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span></li>',
           $liAttribute,
-          esc_html( $tax->name ),
+          esc_html( $schemaList ),
           $currentOption,
           esc_html( mb_substr( $post->post_title,0,30 ) )//30文字制限
         );
