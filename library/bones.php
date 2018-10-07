@@ -104,8 +104,8 @@ function bones_scripts_and_styles() {
     // modernizr (without media query polyfill)
     wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 
-    $fa5 = '/library/shard5/css/js/all.min.js';
-    wp_register_script( 'fa5js', get_stylesheet_directory_uri() . $fa5, array(), '', false );
+    $fa5 = '//use.fontawesome.com/releases/v5.3.1/css/all.css';
+    wp_register_style( 'fa5css', $fa5 , array(), '', 'all' );
     // register main stylesheet
     //wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
     $shard5 = '/library/shard5/css/shard5.css';
@@ -136,12 +136,15 @@ function bones_scripts_and_styles() {
       }
     }
     // enqueue styles and scripts
-    wp_enqueue_script( 'fa5js' );
     wp_enqueue_script( 'bones-modernizr' );
     wp_enqueue_script( 'googlePlus' );
     //wp_enqueue_style( 'bones-stylesheet' );
     wp_enqueue_style( 'shard-stylesheet' );
     wp_enqueue_style( 'bones-ie-only' );
+    wp_enqueue_style( 'fa5css' );
+    // 現状、integrityやconditionalはadd_dateで入れられないので今は削除
+    //wp_style_add_data( 'fa5css', 'integrity','sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU');
+    //wp_style_add_data( 'fa5css', 'crossorigin', 'anonymous' );
 
     $wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
 
