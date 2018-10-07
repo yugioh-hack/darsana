@@ -1,5 +1,36 @@
 <?php
 
+// term_id によってfontawesomeの表示を変更する
+if(! function_exists('shard_fontawesome_random')) {
+  function shard_fontawesome_random($term_id) {
+    switch($term_id % 7) {
+      case '0':
+        return '<i class="fas fa-coffee"></i>';
+        break;
+      case '1':
+        return '<i class="fas fa-chalkboard-teacher"></i>';
+        break;
+      case '2':
+        return '<i class="fas fa-cocktail"></i>';
+        break;
+      case '3':
+        return '<i class="fas fa-helicopter"></i>';
+        break;
+      case '4':
+        return '<i class="fas fa-walking"></i>';
+        break;
+      case '5':
+        return '<i class="fas fa-charging-station"></i>';
+        break;
+      case '6':
+        return '<i class="fas fa-car"></i>';
+        break;
+      default :
+        return '<i class="fas fa-coffee"></i>';
+    }
+  }
+}
+
 // カテゴリー毎に投稿を一覧で表示する
 if ( ! function_exists( 'shard_get_archive_posts' ) ) {
   function shard_get_archive_posts() {
@@ -73,13 +104,24 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
 
         // ポストが存在するならば
         if($tax_posts):
-          echo '<section class="column is-4"><h3 id="' . esc_html($taxonomy->slug) . '"><a href="'. $url_taxonomy .'">' . esc_html($taxonomy->name) .'</a>
-                </h3> <ul>';
-            foreach($tax_posts as $tax_post) {
-              echo '<li><a href="'. get_permalink($tax_post->ID).'">'. get_the_title($tax_post->ID).'</a></li>';
-              }
-              wp_reset_postdata();
-            echo '</ul></section>';
+          echo '<section class="column is-12-mobile is-6-tablet is-4-desktop front-section">';
+          echo  '<div class="front-section__columns columns is-mobile">';
+          echo  '<div class="column is-2">';
+          echo    '<span class="front-icon">'.shard_fontawesome_random($taxonomy->term_id).'</span>'; // アイコンをtermi_idを元にしてランダムに生成する
+          echo  '</div>';
+          echo  '<div class="front-section__content column">';
+          echo    '<h2 class="front-heading" id="' . esc_html($taxonomy->slug) . '">';
+          echo      '<a href="'. $url_taxonomy .'">'. esc_html($taxonomy->name) .'</a>';
+          echo    '</h2>';
+          echo    '<ul class="front-list">';
+            foreach($tax_posts as $tax_post):
+               echo '<li class="front-listItem"><a href="'. get_permalink($tax_post->ID).'">'. get_the_title($tax_post->ID).'</a></li>';
+            endforeach;
+            wp_reset_postdata();
+          echo     '</ul>';
+          echo    '</div>';// #front-section__content
+          echo   '</div>';
+          echo '</section>';
         endif;
 
       }
