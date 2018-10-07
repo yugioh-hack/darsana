@@ -106,7 +106,7 @@ function bones_scripts_and_styles() {
 
     // register main stylesheet
     //wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
-    $shard5 = '/library/shard5/dest/shard5.css';
+    $shard5 = '/library/shard5/css/shard5.css';
     wp_register_style( 'shard-stylesheet', get_stylesheet_directory_uri() . $shard5, array(), date("YmdHi", filemtime( get_stylesheet_directory(). $shard5 ) ), 'all' );
 
     // ie-only style sheet
