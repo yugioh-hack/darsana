@@ -66,8 +66,8 @@
 
           <?php get_sidebar(); ?>
 
-        </section>
+        </div>
 
-      </div>
+      </section>
 
 <?php get_footer(); ?>
