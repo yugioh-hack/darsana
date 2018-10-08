@@ -35,9 +35,9 @@
   </head>
 
   <body <?php body_class('common-wrapper'); ?> itemscope itemtype="https://schema.org/WebPage">
-      <header role="banner" itemscope itemtype="https://schema.org/WPHeader">
+      <header class="common-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
 
-        <nav class="navbar is-spaced is-primary section" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <nav class="navbar is-spaced is-primary section container" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
           <div class="navbar-brand">
             <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
             <?php if(is_home()): ?>
