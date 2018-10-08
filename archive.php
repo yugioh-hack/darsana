@@ -4,7 +4,7 @@
           <?php breadcrumb(); ?>
         </div>
       </div>
-      <section class="container section">
+      <section class="container section archiveSection">
 
         <div id="content" class="columns is-centered">
 
