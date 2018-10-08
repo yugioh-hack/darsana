@@ -93,32 +93,33 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
         );
       }else{
         // カスタム投稿タイプ
-        $custom_post_type = get_query_var('post_type') ;
-        $taxes = get_object_taxonomies($custom_post_type);
-        $mytax = $taxes[0];
-        $taxes = get_the_terms($post->ID, $mytax);
-        $tax = $taxes ? get_youngest_tax($taxes, $mytax): null;
-        if (!empty($tax)) {
-          if($tax -> parent !=0) {//親要素がある
-            $ancestors = array_reverse(get_ancestors($tax -> term_id, $mytax));
-              foreach($ancestors as $ancestor) {
-                $str .= sprintf(
-                  '<li %1$s itemscope itemtype="%2$s"><a itemprop="url" href="%3$s"><span itemprop="name">%4$s</span></a></li>',
-                  $liAttribute, // 1
-                  esc_html( $schemaList ), //2
-                  esc_url( get_term_link( $ancestor, $mytax )), //3
-                  esc_html( get_term( $ancestor, $mytax )) //4
-                );
-              }
-          }
-        }
-        $str .= sprintf(
-          '<li %1$s itemscope itemtype="%2$s"><a itemprop="url" href="%3$s"><span itemprop="name">%4$s</span></a></li>',
-          $liAttribute, // 1
-          esc_html( $schemaList ), //2
-          esc_url( get_term_link( $tax, $mytax )), //3
-          esc_html( $tax->name ) //4
-        );
+        // タームからはカテゴリーかタグ化を判定できないので、両方が混ざると非常に危険なので投稿名だけを表示することにした
+        // $custom_post_type = get_query_var('post_type') ;
+        // $taxes = get_object_taxonomies($custom_post_type);
+        // $mytax = $taxes[0];
+        // $taxes = get_the_terms($post->ID, $mytax);
+        // $tax = $taxes ? get_youngest_tax($taxes, $mytax): null;
+        // if (!empty($tax)) {
+        //   if($tax -> parent !=0) {//親要素がある
+        //     $ancestors = array_reverse(get_ancestors($tax -> term_id, $mytax));
+        //       foreach($ancestors as $ancestor) {
+        //         $str .= sprintf(
+        //           '<li %1$s itemscope itemtype="%2$s"><a itemprop="url" href="%3$s"><span itemprop="name">%4$s</span></a></li>',
+        //           $liAttribute, // 1
+        //           esc_html( $schemaList ), //2
+        //           esc_url( get_term_link( $ancestor, $mytax )), //3
+        //           esc_html( get_term( $ancestor, $mytax )) //4
+        //         );
+        //       }
+        //   }
+        // }
+        // $str .= sprintf(
+        //   '<li %1$s itemscope itemtype="%2$s"><a itemprop="url" href="%3$s"><span itemprop="name">%4$s</span></a></li>',
+        //   $liAttribute, // 1
+        //   esc_html( $schemaList ), //2
+        //   esc_url( get_term_link( $tax, $mytax )), //3
+        //   esc_html( $tax->name ) //4
+        // );
         $str .= sprintf(
           '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span></li>',
           $liAttribute,
