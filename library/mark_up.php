@@ -75,7 +75,7 @@ if ( ! function_exists( 'shard_get_archive_posts' ) ) {
 // カテゴリー毎にカスタム投稿の一覧を表示する
 if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
   function shard_get_archive_custom_posts() {
-    $taxonomy_name = 'howto_cat'; // タクソノミーのスラッグ名を入れる
+    $taxonomy_name = 'how_to_cat'; // タクソノミーのスラッグ名を入れる
     $post_type     = 'how_to_ingress'; // カスタム投稿のスラッグ名を入れる
     $args = array(
         'orderby' => 'name',

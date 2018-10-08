@@ -65,7 +65,7 @@
                     $singlePostTagList .= '</div>';
 
                     $catListName = "Categories";
-                    $catLists = get_the_term_list( $post->ID, 'howto_cat','',', ','' );
+                    $catLists = get_the_term_list( $post->ID, 'how_to_cat','',', ','' );
 
                     $tagListName = "Tags";
                     $tagLists = get_the_term_list($post->ID,'how_to_tag' ,'<span class="singlePost--footer__tagItem">','</span><span class="singlePost--footer__tagItem">','','</span>');
