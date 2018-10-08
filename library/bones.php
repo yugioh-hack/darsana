@@ -337,6 +337,61 @@ function custom_page_navi() {
   echo '</div>';
 }
 
+// 一般の投稿とカスタム投稿を区別して、それぞれの前後の記事を出力する
+function custom_prev_next() {
+  if(is_single())
+    if(get_post_type() == 'post'): //一般的な投稿ならば
+      /***********************************************************************
+      // get_next_post($in_same_term,$excluded_terms,$taxonomy)
+      // in_same_term: 初期値false ここをtrueにした場合、$taxonomy でしたタクソノミーと同一のものを返す
+      // excluded_terms: 除外するターム
+      // $taxonomy: ここで、同一判定するタクソノミーを指定
+      ************************************************************************/
+      $get_prev_post = get_previous_post();
+      $get_next_post = get_next_post();
+
+    else: // カスタム投稿ならば
+      $taxonomies = get_post_taxonomies(); //投稿に紐付いたタクソノミーの一覧
+      foreach($taxonomies as $val):
+        if ( strpos($val, '_cat') !== false ):  // '_cat'がタクソノミーの中に含まれているかを確認
+          $taxonomy = $val; // '_cat'を含むタクソノミーを抽出
+          break;
+        endif; // '_cat'に該当するものがあったら処理を終える
+      endforeach;
+
+      //同一タクソノミーだけで前後を判定
+      $get_prev_post = get_previous_post(true,'',$taxonomy);// タクソノミーを指定して前の投稿を返す
+      $get_next_post = get_next_post(true,'',$taxonomy); // タクソノミーを指定して次の投稿を返す
+  endif;
+
+  if( !empty($get_prev_post) || !empty($get_next_post) ): // 前後のどちらかに投稿がある場合
+    $str =''; // 出力する変数
+    $prevnext_post = '<div class="%1$s"><a class="%2$s" href="%3$s">%4$s</a></div>';
+    if(!empty($get_prev_post)): // 前の投稿を表示
+      $str .= sprintf( $prevnext_post,
+                       'singlePost-prevPost',
+                       'singlePost-prevLink',
+                       get_permalink( $get_prev_post->ID ),
+                       '前の記事' //$get_prev_post->post_title
+                     );
+    endif;
+    if(!empty($get_next_post)): // あとの投稿を表示
+      $str .= sprintf( $prevnext_post,
+                       'singlePost-nextPost',
+                       'singlePost-nextLink',
+                       get_permalink( $get_next_post->ID ),
+                       '次の記事'//$get_next_post->post_title
+                     );
+    endif;
+
+    echo $str;
+
+  else:
+    return;
+  endif;
+
+}
+
 /* end page navi */
 
 /*********************
