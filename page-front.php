@@ -15,7 +15,7 @@
 
 <?php get_header(); ?>
 
-    <section class="container section singleSection">
+    <section class="container section front-section">
       <div class="columns is-centered" id="content">
 
         <div class="column" id="content-inner">
