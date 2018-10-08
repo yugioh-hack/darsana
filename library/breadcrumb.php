@@ -3,12 +3,23 @@
 function breadcrumb($divOption = array("class" => "breadcrumbs")) {
   global $post;
   $str ='';
+  $containerOption = array("breadcrumb","is-shadow");
+  $innerOption     = array("container", "breadcrumb__inner");
   $ulOption = array("class" => "breadcrumb__list");
   $liOption = array("class" => "breadcrumb__item", "itemprop" => "itemListElement");
-  if(!is_home() && !is_admin()) {
+
+  if(is_front_page() || is_home() || is_admin()) {
+    return ;
+  }elseif(!is_home() && !is_admin()) {
     $schemaBread = 'https://schema.org/BreadcrumbList';
     $schemaList  = 'https://schema.org/ListItem';
     $position    = 1;
+
+    $containerAttribute = '';
+    $containerAttribute .= sprintf(' class="%1$s" ', implode(' ',$containerOption)); // 配列の中身を区切り文字を入れて結合
+
+    $innerAttribute = '';
+    $innerAttribute .= sprintf('class="%1$s" ', implode(' ',$innerOption)); // 配列の中身を区切り文字を入れて結合
 
     $tagAttribute = '';
     foreach($divOption as $attrName => $attrValue) {
@@ -27,7 +38,9 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
     $currentOption = 'class="breadcrumb__current"';
 
     $str .= sprintf(
-      '<nav %1$s>%2$s<ul %3$s itemscope itemtype="%4$s"><li %5$s itemscope itemtype="%6$s" ><a itemprop="url" href="%7$s"><span itemprop="url">Home</span></a><meta itemprop="position" content="%8$d" /></li>',
+      '<div %1$s><div %2$s><nav %3$s>%4$s<ul %5$s itemscope itemtype="%6$s"><li %7$s itemscope itemtype="%8$s" ><a itemprop="url" href="%9$s"><span itemprop="url">Home</span></a><meta itemprop="position" content="%8$d" /></li>',
+      $containerAttribute,
+      $innerAttribute,
       $tagAttribute,
       $navTitle,
       $ulAttribute,
@@ -235,6 +248,8 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
 
     $str .= '</ul>';
     $str .= '</nav>';
+    $str .= '</div>';
+    $str .= '</div>';
   }
   echo $str;
   wp_reset_postdata();
