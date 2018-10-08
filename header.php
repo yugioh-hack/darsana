@@ -69,3 +69,4 @@
         </nav>
 
       </header>
+        <?php breadcrumb(); ?>

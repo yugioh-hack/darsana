@@ -1,9 +1,4 @@
 <?php get_header(); ?>
-    <div class="breadcrumb">
-      <div class="container breadcrumb__inner">
-        <?php breadcrumb(); ?>
-      </div>
-    </div>
       <section class="container section singleSection">
         <div class="columns is-centered">
 
