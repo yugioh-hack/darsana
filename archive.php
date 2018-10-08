@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-      <section class="container section archiveSection">
+      <section class="container section archive-section">
 
         <div id="content" class="columns is-centered">
 
