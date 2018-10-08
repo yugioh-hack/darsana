@@ -73,7 +73,7 @@
                     printf( $singlePostTagList,$catListName,$catLists);
                     printf( $singlePostTagList,$tagListName,$tagLists);
                      ?>
-
+                  <?php custom_prev_next(); ?>
                   <?php //the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
                 </footer> <?php // end article footer ?>
 
