@@ -339,7 +339,7 @@ function custom_page_navi() {
 
 // 一般の投稿とカスタム投稿を区別して、それぞれの前後の記事を出力する
 function custom_prev_next() {
-  if(is_single())
+  if(is_single()):
     if(get_post_type() == 'post'): //一般的な投稿ならば
       /***********************************************************************
       // get_next_post($in_same_term,$excluded_terms,$taxonomy)
