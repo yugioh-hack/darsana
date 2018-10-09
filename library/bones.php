@@ -362,34 +362,34 @@ function custom_prev_next() {
       //同一タクソノミーだけで前後を判定
       $get_prev_post = get_previous_post(true,'',$taxonomy);// タクソノミーを指定して前の投稿を返す
       $get_next_post = get_next_post(true,'',$taxonomy); // タクソノミーを指定して次の投稿を返す
-  endif;
+    endif; // get_post_type()
 
-  if( !empty($get_prev_post) || !empty($get_next_post) ): // 前後のどちらかに投稿がある場合
-    $str =''; // 出力する変数
-    $prevnext_post = '<div class="%1$s"><a class="%2$s" href="%3$s">%4$s</a></div>';
-    if(!empty($get_prev_post)): // 前の投稿を表示
-      $str .= sprintf( $prevnext_post,
-                       'singlePost-prevPost',
-                       'singlePost-prevLink',
-                       get_permalink( $get_prev_post->ID ),
-                       '前の記事' //$get_prev_post->post_title
-                     );
+    if( !empty($get_prev_post) || !empty($get_next_post) ): // 前後のどちらかに投稿がある場合
+      $str =''; // 出力する変数
+      $prevnext_post = '<div class="%1$s"><a class="%2$s" href="%3$s">%4$s</a></div>';
+      if(!empty($get_prev_post)): // 前の投稿を表示
+        $str .= sprintf( $prevnext_post,
+                         'singlePost-prevPost',
+                         'singlePost-prevLink',
+                         get_permalink( $get_prev_post->ID ),
+                         '前の記事' //$get_prev_post->post_title
+                       );
+      endif;
+      if(!empty($get_next_post)): // あとの投稿を表示
+        $str .= sprintf( $prevnext_post,
+                         'singlePost-nextPost',
+                         'singlePost-nextLink',
+                         get_permalink( $get_next_post->ID ),
+                         '次の記事'//$get_next_post->post_title
+                       );
+      endif;
+
+      echo $str;
+
+    else:
+      return;
     endif;
-    if(!empty($get_next_post)): // あとの投稿を表示
-      $str .= sprintf( $prevnext_post,
-                       'singlePost-nextPost',
-                       'singlePost-nextLink',
-                       get_permalink( $get_next_post->ID ),
-                       '次の記事'//$get_next_post->post_title
-                     );
-    endif;
-
-    echo $str;
-
-  else:
-    return;
-  endif;
-
+  endif;// is_single()
 }
 
 /* end page navi */
