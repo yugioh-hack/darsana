@@ -1,5 +1,53 @@
 <?php
 
+// シングルポストの下にカテゴリーとタグを出力する関数
+// ブログとそれ以外を区別する
+if(! function_exists('shard_singlePost_footer_term')) {
+  function shard_singlePost_footer_term() {
+    if(is_single()):
+        $singlePostTermList  = '<div class="singlePost--footer__info">';
+        $singlePostTermList .= '<p class="singlePost--footer__tagName">%1$s</p>';
+        $singlePostTermList .= '<p class="singlePost--footer__tagLists">%2$s</p>';
+        $singlePostTermList .= '</div>';
+
+        $catListName = "Categories";
+        $tagListName = "Tags";
+        $catLists    = '';
+        $tagLists    = '';
+
+      if(get_post_type() == 'post'): //一般的な投稿ならば
+        $catLists .= get_the_category_list(' ,');
+        $tagLists .= get_the_tag_list('<span class="singlePost--footer__tagItem">','</span><span class="singlePost--footer__tagItem">','</span>');
+      else: // カスタム投稿
+        $taxonomies = get_post_taxonomies(); //投稿に紐付いたタクソノミーの一覧
+        $taxonomy_cat = '';
+        $taxonomy_tag = '';
+
+        foreach($taxonomies as $val):
+          if ( strpos($val, '_cat') !== false ):  // '_cat'がタクソノミーの中に含まれているかを確認
+            $taxonomy_cat = $val; // '_cat'を含むタクソノミーを抽出
+          endif;
+          if ( strpos($val, '_tag') !== false ):  // '_tag'がタクソノミーの中に含まれているかを確認
+            $taxonomy_tag = $val; // '_cat'を含むタクソノミーを抽出
+          endif;
+        endforeach;
+
+        if($taxonomy_cat !== false):
+          $catLists .= get_the_term_list($post->ID, $taxonomy_cat ,'',', ','' );
+        endif;
+
+        if($taxonomy_tag !== false):
+          $tagLists .= get_the_term_list($post->ID, $taxonomy_tag ,'<span class="singlePost--footer__tagItem">','</span><span class="singlePost--footer__tagItem">','','</span>');
+        endif;
+
+      endif; // get_post_type()
+
+      printf( $singlePostTermList,$catListName,$catLists);
+      printf( $singlePostTermList,$tagListName,$tagLists);
+    endif; // is_single
+  }
+}
+
 // term_id によってfontawesomeの表示を変更する
 if(! function_exists('shard_fontawesome_random')) {
   function shard_fontawesome_random($term_id) {
