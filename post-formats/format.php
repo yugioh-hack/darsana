@@ -58,22 +58,7 @@
                 </section> <?php // end article section ?>
 
                 <footer class="singlePost--footer">
-                  <?php
-                    $singlePostTagList  = '<div class="singlePost--footer__info">';
-                    $singlePostTagList .= '<p class="singlePost--footer__tagName">%1$s</p>';
-                    $singlePostTagList .= '<p class="singlePost--footer__tagLists">%2$s</p>';
-                    $singlePostTagList .= '</div>';
-
-                    $catListName = "Categories";
-                    $catLists = get_the_category_list(' ,');
-
-                    $tagListName = "Tags";
-                    $tagLists = get_the_tag_list('<span class="singlePost--footer__tagItem">','</span><span class="singlePost--footer__tagItem">','</span>');
-
-                    printf( $singlePostTagList,$catListName,$catLists);
-                    printf( $singlePostTagList,$tagListName,$tagLists);
-                     ?>
-
+                  <?php shard_singlePost_footer_term(); ?>
                   <?php custom_prev_next(); ?>
                   <?php //the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
                 </footer> <?php // end article footer ?>
