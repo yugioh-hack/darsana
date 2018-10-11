@@ -58,3 +58,4 @@ temp/
 *.scssc
 
 library/shard5
+!library/shard5/css
