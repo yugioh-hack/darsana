@@ -1,4 +1,30 @@
 <?php
+
+// sns_share_button
+function sns_share_button() {
+  $post_url = get_the_permalink();
+
+  $twitter_text = 'ツイート';
+  $fb_count = fetch_facebook_count($post_url);
+  $feedly_count = get_feedly_count($post_url);
+  $google_plus_one_count = get_google_plus_one_count($post_url);
+  $hatena_count = get_hatena_hatebu_count($post_url);
+
+  $twitter_share = '<a class="button sns-button sns-button--twitter" href="http://twitter.com/share?text=' . get_the_title() .  '&url=' . $post_url . '" target="_blank">'. $twitter_text .'</a>';
+  $fb_share      = '<a class="button sns-button sns-button--facebook" href="https://www.facebook.com/sharer/sharer.php?u=' . $post_url . '&t='. get_the_title() . '"  target="_blank">' . $fb_count . '</a>';
+  $gplus_share   = '<a class="button sns-button sns-button--googleplus" href="https://plus.google.com/share?url=' . $post_url . '" target="_blank">' . $google_plus_one_count . '</a>';
+  $hatebu_share  = '<a class="button sns-button sns-button--hatena" href="http://b.hatena.ne.jp/entry/'. $post_url . '" target="_blank">' . $hatena_count . '</a>';
+
+  $button  = '';
+  $button .= $twitter_share;
+  $button .= $fb_share;
+  $button .= $gplus_share;
+  $button .= $hatebu_share;
+
+  $str = '<div class="sns-button-container">'.$button.'</div>';
+  echo $str;
+}
+
 /*********************************
 /* Facebookシェア数を取得する
 ********************************/
@@ -23,8 +49,8 @@ function fetch_facebook_count($url) {
  *  http://nelog.jp/get-feedly-count
  ********************************/
 function get_feedly_count(){
-  //$feed_url = rawurlencode(get_bloginfo( 'rss2_url' ) );
-  $feed_url = rawurlencode(get_bloginfo( 'http://yugioh-hack.com/ingress-pokemongo-osm-ingadv2017' ) );
+  $feed_url = rawurlencode(get_bloginfo( 'rss2_url' ) );
+  //$feed_url = rawurlencode(get_bloginfo( 'http://yugioh-hack.com/ingress-pokemongo-osm-ingadv2017' ) );
   $res = '0';
   $subscribers = wp_remote_get( "http://cloud.feedly.com/v3/feeds/feed%2F$feed_url" );
   if (!is_wp_error( $subscribers ) && $subscribers["response"]["code"] === 200) {

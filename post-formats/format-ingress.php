@@ -27,7 +27,7 @@
 
                   </p>
                   <h1 class="singlePost--title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
-
+                  <?php sns_share_button(); ?>
 
                 </header> <?php // end article header ?>
 
