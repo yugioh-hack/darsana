@@ -1,5 +1,27 @@
 <?php
 
+// 一般投稿とカスタム投稿をリスト表示
+if(! function_exists('shard_frontPage_posts_list')) {
+  function shard_frontPage_posts_list() {
+    $args = array(
+      'posts_per_page'   => 4, //表示件数
+      'offset'           => 0,
+      'orderby'          => 'modified', // 更新順
+      'order'            => 'DESC',
+      'post_type'        => array( 'post','how_to_ingress'),
+      'post_status'      => 'publish',
+      'suppress_filters' => true
+    );
+    $posts_array = get_posts( $args );
+    $posts_list_item = '<ul>';
+    foreach ( $posts_array as $post ) : setup_postdata( $post ) ;
+      $posts_list_item .= '<li><a href="'. get_the_permalink($post->ID).'">'. get_the_title($post->ID). '</a></li>';
+    endforeach; wp_reset_postdata();
+    $posts_list_item .= '</ul>';
+
+    echo $posts_list_item;
+  }
+}
 // シングルポストの下にカテゴリーとタグを出力する関数
 // ブログとそれ以外を区別する
 if(! function_exists('shard_singlePost_footer_term')) {

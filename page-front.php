@@ -22,17 +22,20 @@
 
             <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class('columns is-multiline'); ?> role="article" itemscope itemtype="https://schema.org/BlogPosting">
+              <article id="post-<?php the_ID(); ?>" <?php post_class('columns is-multiline front-article'); ?> role="article" itemscope itemtype="https://schema.org/BlogPosting">
                 <?php shard_get_archive_custom_posts(); ?>
-
               </article>
 
 
             </main>
 
-            <?php //get_sidebar(); ?>
-
+          <aside class="front-aside--postList">
+            <h3 class="front-aside__title">更新記事</h3>
+            <?php shard_frontPage_posts_list(); ?>
+          </aside>
         </div> <!-- #content-inner -->
+
+
 
       </div> <!-- #content -->
   </section>
