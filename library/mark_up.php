@@ -198,3 +198,15 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
     }
   }
 }
+
+// アーカイブ等でカテゴリーのタイトルに「カテゴリー：」などと表示しない
+add_filter( 'get_the_archive_title', function ($title) {
+  if ( is_category() ) :
+    $title = single_cat_title( '', false );
+  elseif ( is_tag() ) :
+    $title = single_tag_title( '', false );
+  elseif ( is_tax('how_to_cat') ) :
+    $title = single_term_title( '', false );
+  endif;
+    return $title;
+});
