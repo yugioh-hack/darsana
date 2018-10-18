@@ -15,7 +15,7 @@ if(! function_exists('shard_frontPage_posts_list')) {
     $posts_array = get_posts( $args );
     $posts_list_item = '<ul>';
     foreach ( $posts_array as $post ) : setup_postdata( $post ) ;
-      $posts_list_item .= '<li><a href="'. get_the_permalink($post->ID).'">'. get_the_title($post->ID). '</a><time class="front-postList__time">'.get_the_modified_date('',$post->ID).'</time></li>';
+      $posts_list_item .= '<li><a href="'. get_the_permalink($post->ID).'">'. get_the_title($post->ID). '</a><time class="front-aside--postList__time">'.get_the_modified_date('',$post->ID).'</time></li>';
     endforeach; wp_reset_postdata();
     $posts_list_item .= '</ul>';
 
