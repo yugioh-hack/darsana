@@ -21,7 +21,7 @@ function sns_share_button() {
   $button .= $gplus_share;
   $button .= $hatebu_share;
 
-  $str = '<div class="sns-button-container">'.$button.'</div>';
+  $str = '<div class="sns-container">'.$button.'</div>';
   echo $str;
 }
 
