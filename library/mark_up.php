@@ -191,7 +191,7 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
     );
     $taxonomys = get_terms( $taxonomy_name, $args);
     if(!is_wp_error($taxonomys) && count($taxonomys)) {
-      foreach($taxonomys as $taxonomy) {
+      foreach($taxonomys as $taxonomy):
         $url_taxonomy = get_term_link($taxonomy->slug, $taxonomy_name);
         $tax_get_array = array(
             'post_type' => $post_type, //表示したいカスタム投稿
@@ -219,7 +219,7 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
           echo  '</div>';
           echo  '<div class="front-section__content column">';
           echo    '<h2 class="front-heading" id="' . esc_html($taxonomy->slug) . '">';
-          echo      '<a href="'. $url_taxonomy .'">'. esc_html($taxonomy->name) .'</a>';
+          echo      esc_html($taxonomy->name);
           echo    '</h2>';
           echo    '<ul class="front-list">';
             foreach($tax_posts as $tax_post):
@@ -227,12 +227,12 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
             endforeach;
             wp_reset_postdata();
           echo     '</ul>';
+          echo      '<div class="front-viewall"><a href="'. $url_taxonomy .'"><i class="fas fa-arrow-circle-right"></i>View All</a></div>';
           echo    '</div>';// #front-section__content
           echo   '</div>';
           echo '</section>';
         endif;
-
-      }
+      endforeach;
     }
   }
 }
