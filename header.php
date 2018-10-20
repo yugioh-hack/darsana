@@ -42,7 +42,7 @@
           <div class="container">
             <div class="navbar-brand">
               <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
-              <?php if(is_home()): ?>
+              <?php if(is_front_page()): ?>
               <h1 class="common-header--title navbar-item" itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1>
               <?php else: ?>
               <a class="navbar-item" href="<?php echo home_url(); ?>" rel="nofollow"><h1 class="common-header--title" itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1></a>
