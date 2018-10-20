@@ -41,9 +41,9 @@
           <div class="navbar-brand">
             <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
             <?php if(is_home()): ?>
-            <h1 class="title navbar-item" itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1>
+            <h1 class="common-header--title navbar-item" itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1>
             <?php else: ?>
-            <a class="title navbar-item" href="<?php echo home_url(); ?>" rel="nofollow"><h1 itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1></a>
+            <a class="common-header--title navbar-item" href="<?php echo home_url(); ?>" rel="nofollow"><h1 itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1></a>
             <?php endif; ?>
           </div>
           <?php // if you'd like to use the site description you can un-comment it below ?>
