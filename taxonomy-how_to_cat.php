@@ -4,17 +4,19 @@
         <div id="content" class="columns is-centered">
 
             <main id="main" class="column is-8" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-
-              <?php
-              the_archive_title( '<h1 class="page-title">', '</h1>' );
-              the_archive_description( '<div class="taxonomy-description">', '</div>' );
-              ?>
+              <header class="taxonomy-header">
+                <?php
+                the_archive_title( '<h1 class="taxonomy-title">', '</h1>' );
+                the_archive_description( '<div class="taxonomy-description">', '</div>' );
+                ?>
+              </header>
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+              <section>
+              <article id="post-<?php the_ID(); ?>" <?php post_class( 'taxonomy-article' ); ?> role="article">
 
-                  <h3 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+                  <h3 class="taxonomy-article__title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
                   <p class="byline entry-meta vcard">
                     <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
                                      /* the time the post was published */
@@ -44,7 +46,7 @@
                   </article>
 
               <?php endif; ?>
-
+              </section>
             </main>
 
           <?php get_sidebar(); ?>
