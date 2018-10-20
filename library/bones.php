@@ -141,7 +141,7 @@ function bones_scripts_and_styles() {
       }
     }
     // enqueue styles and scripts
-    wp_enqueue_script( 'bones-modernizr' );
+    //wp_enqueue_script( 'bones-modernizr' );
     wp_enqueue_script( 'googlePlus' );
     wp_enqueue_script( 'particle-js' );
     wp_enqueue_script( 'particle-set' );
