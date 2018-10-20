@@ -34,37 +34,39 @@
 
   </head>
 
-  <body <?php body_class('common-wrapper'); ?> itemscope itemtype="https://schema.org/WebPage">
+  <body <?php body_class(); ?> itemscope itemtype="https://schema.org/WebPage">
+    <div class="common-wrapper">
       <header class="common-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
 
-        <nav class="navbar is-spaced is-primary container" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
-          <div class="navbar-brand">
-            <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
-            <?php if(is_home()): ?>
-            <h1 class="common-header--title navbar-item" itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1>
-            <?php else: ?>
-            <a class="common-header--title navbar-item" href="<?php echo home_url(); ?>" rel="nofollow"><h1 itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1></a>
-            <?php endif; ?>
-          </div>
+        <nav class="navbar is-primary" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+          <div class="container">
+            <div class="navbar-brand">
+              <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
+              <?php if(is_home()): ?>
+              <h1 class="common-header--title navbar-item" itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1>
+              <?php else: ?>
+              <a class="navbar-item" href="<?php echo home_url(); ?>" rel="nofollow"><h1 class="common-header--title" itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1></a>
+              <?php endif; ?>
+            </div>
           <?php // if you'd like to use the site description you can un-comment it below ?>
 
 
-          <div class="navbar-menu">
-            <?php wp_nav_menu(array(
-                       'container' => false,                           // remove nav container
-                       'container_class' => 'navbar-menu',                 // class of container (should you choose to use it)
-                       'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
-                       'menu_class' => 'navbar-start',               // adding custom nav class
-                       'theme_location' => 'main-nav',                 // where it's located in the theme
-                       'before' => '<li>',                                 // before the menu
-                       'after' => '</li>',                                // after the menu
-                       'link_before' => '',                          // before each link
-                       'link_after' => '',                           // after each link
-                       'depth' => 0,                                 // limit the depth of the nav
-                       'fallback_cb' => ''                             // fallback function (if there is one)
-            )); ?>
+            <div class="navbar-menu">
+              <?php wp_nav_menu(array(
+                         'container' => false,                           // remove nav container
+                         'container_class' => 'navbar-menu',                 // class of container (should you choose to use it)
+                         'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
+                         'menu_class' => 'navbar-start',               // adding custom nav class
+                         'theme_location' => 'main-nav',                 // where it's located in the theme
+                         'before' => '<li>',                                 // before the menu
+                         'after' => '</li>',                                // after the menu
+                         'link_before' => '',                          // before each link
+                         'link_after' => '',                           // after each link
+                         'depth' => 0,                                 // limit the depth of the nav
+                         'fallback_cb' => ''                             // fallback function (if there is one)
+              )); ?>
+            </div>
           </div>
-
         </nav>
 
       </header>

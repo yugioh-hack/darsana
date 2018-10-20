@@ -28,7 +28,7 @@
 
     <?php // all js scripts are loaded in library/bones.php ?>
     <?php wp_footer(); ?>
-
+    </div> <!-- #common-wrapper-->
   </body>
 
 </html> <!-- end of site. what a ride! -->

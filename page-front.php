@@ -14,8 +14,8 @@
 ?>
 
 <?php get_header(); ?>
-
-    <section class="container section front-section">
+  <div class="container front-container">
+    <section class="section front-sections">
       <div class="columns is-centered" id="content">
 
         <div class="column" id="content-inner">
@@ -38,7 +38,8 @@
 
 
       </div> <!-- #content -->
-  </section>
+    </section>
+  </div> <!-- #container -->
 
 
 <?php get_footer(); ?>
