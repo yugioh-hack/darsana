@@ -125,8 +125,9 @@ function bones_scripts_and_styles() {
     wp_register_script( 'googlePlus', '//apis.google.com/js/plusone.js',array(),'', true );
 
     // particlejs
+    $path_particlejs = '/library/js/particles.set.js';
     wp_register_script( 'particle-js', get_stylesheet_directory_uri() . '/library/js/particles.min.js', array(), '', true );
-    wp_register_script( 'particle-set', get_stylesheet_directory_uri() . '/library/js/particles.set.js', array(), '', true );
+    wp_register_script( 'particle-set', get_stylesheet_directory_uri() . $path_particlejs , array(), date("YmdHi", filemtime( get_stylesheet_directory(). $path_particlejs )), true );
 
     //https://apis.google.com/js/platform.js
     // jQueryをcdnから読み込む
