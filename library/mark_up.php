@@ -1,4 +1,42 @@
 <?php
+// HomeのHERO
+if(! function_exists('shard_hero')) {
+  function shard_hero() {
+    if( is_home() || is_front_page() ):
+      $hero = '<section %1$s %2$s><div %4$s><div %4$s><h1 %5$s>%6$s</h1></div></div></section>';
+      $hero_particle_option = array("particles-js");
+      $hero_section_option = array("hero","is-info","is-medium","is-bold");
+      $hero_body_option = array("hero-body");
+      $hero_container_option = array("container");
+      $hero_title_option = array("title");
+
+      if ( get_bloginfo('description') ) :
+        $hero_info = get_bloginfo ( 'description' );
+      else:
+        $hero_info = 'The world around you is not what it seems.';
+      endif;
+
+      $hero_particle_attribute = sprintf('id="%1$s"', implode(' ',$hero_particle_option));
+      $hero_section_attribute = sprintf('class="%1$s"', implode(' ',$hero_section_option));
+      $hero_body_attribute = sprintf('class="%1$s"', implode(' ',$hero_body_option));
+      $hero_container_attribute = sprintf('class="%1$s"', implode(' ',$hero_container_option));
+      $hero_title_attribute = sprintf('class="%1$s"', implode(' ',$hero_title_option));
+
+      echo sprintf( $hero,
+          $hero_particle_attribute,
+          $hero_section_attribute,
+          $hero_body_attribute,
+          $hero_container_attribute,
+          $hero_title_attribute,
+          $hero_info
+      );
+
+    else:
+      return;
+    endif;
+  }
+}
+
 
 // 一般投稿とカスタム投稿をリスト表示
 if(! function_exists('shard_frontPage_posts_list')) {

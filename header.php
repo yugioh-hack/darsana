@@ -37,7 +37,7 @@
   <body <?php body_class('common-wrapper'); ?> itemscope itemtype="https://schema.org/WebPage">
       <header class="common-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
 
-        <nav class="navbar is-spaced is-primary section container" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <nav class="navbar is-spaced is-primary container" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
           <div class="navbar-brand">
             <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
             <?php if(is_home()): ?>
@@ -47,7 +47,6 @@
             <?php endif; ?>
           </div>
           <?php // if you'd like to use the site description you can un-comment it below ?>
-          <?php // bloginfo('description'); ?>
 
 
           <div class="navbar-menu">
@@ -69,4 +68,6 @@
         </nav>
 
       </header>
+
         <?php breadcrumb(); ?>
+        <?php shard_hero(); ?>

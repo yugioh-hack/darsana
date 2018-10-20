@@ -124,6 +124,10 @@ function bones_scripts_and_styles() {
 
     wp_register_script( 'googlePlus', '//apis.google.com/js/plusone.js',array(),'', true );
 
+    // particlejs
+    wp_register_script( 'particle-js', get_stylesheet_directory_uri() . '/library/js/particles.js', array(), '', true );
+    wp_register_script( 'particle-set', get_stylesheet_directory_uri() . '/library/js/particles.set.js', array(), '', true );
+
     //https://apis.google.com/js/platform.js
     // jQueryをcdnから読み込む
     if(!is_admin()) {
@@ -138,6 +142,8 @@ function bones_scripts_and_styles() {
     // enqueue styles and scripts
     wp_enqueue_script( 'bones-modernizr' );
     wp_enqueue_script( 'googlePlus' );
+    wp_enqueue_script( 'particle-js' );
+    wp_enqueue_script( 'particle-set' );
     //wp_enqueue_style( 'bones-stylesheet' );
     wp_enqueue_style( 'shard-stylesheet' );
     wp_enqueue_style( 'bones-ie-only' );
