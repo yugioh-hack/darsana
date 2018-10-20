@@ -125,7 +125,7 @@ function bones_scripts_and_styles() {
     wp_register_script( 'googlePlus', '//apis.google.com/js/plusone.js',array(),'', true );
 
     // particlejs
-    wp_register_script( 'particle-js', get_stylesheet_directory_uri() . '/library/js/particles.js', array(), '', true );
+    wp_register_script( 'particle-js', get_stylesheet_directory_uri() . '/library/js/particles.min.js', array(), '', true );
     wp_register_script( 'particle-set', get_stylesheet_directory_uri() . '/library/js/particles.set.js', array(), '', true );
 
     //https://apis.google.com/js/platform.js
