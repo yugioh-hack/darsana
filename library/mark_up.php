@@ -3,12 +3,12 @@
 if(! function_exists('shard_hero')) {
   function shard_hero() {
     if( is_home() || is_front_page() ):
-      $hero = '<section %1$s %2$s><div %4$s><div %4$s><h1 %5$s>%6$s</h1></div></div></section>';
+      $hero = '<section %1$s><div %2$s><div %3$s><div %4$s><h1 %5$s>%6$s</h1></div></div></div></section>';
       $hero_particle_option = array("particles-js");
       $hero_section_option = array("hero","is-info","is-medium","is-bold");
-      $hero_body_option = array("hero-body");
+      $hero_body_option = array("hero-body columns is-centered");
       $hero_container_option = array("container");
-      $hero_title_option = array("title");
+      $hero_title_option = array("common-hero--title");
 
       if ( get_bloginfo('description') ) :
         $hero_info = get_bloginfo ( 'description' );
@@ -23,8 +23,8 @@ if(! function_exists('shard_hero')) {
       $hero_title_attribute = sprintf('class="%1$s"', implode(' ',$hero_title_option));
 
       echo sprintf( $hero,
-          $hero_particle_attribute,
           $hero_section_attribute,
+          $hero_particle_attribute,
           $hero_body_attribute,
           $hero_container_attribute,
           $hero_title_attribute,
