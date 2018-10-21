@@ -58,10 +58,10 @@
                          'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
                          'menu_class' => 'navbar-start',               // adding custom nav class
                          'theme_location' => 'main-nav',                 // where it's located in the theme
-                         'before' => '<li>',                                 // before the menu
-                         'after' => '</li>',                                // after the menu
-                         'link_before' => '',                          // before each link
-                         'link_after' => '',                           // after each link
+                         'before' => '<span class="navbar-link">',                                 // before the menu
+                         'after' => '</span>',                                // after the menu
+                         //'link_before' => '<span class="nabvar-link">',                          // before each link
+                         //'link_after' => '</span>',                           // after each link
                          'depth' => 0,                                 // limit the depth of the nav
                          'fallback_cb' => ''                             // fallback function (if there is one)
               )); ?>
