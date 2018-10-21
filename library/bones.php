@@ -104,7 +104,7 @@ function bones_scripts_and_styles() {
     // modernizr (without media query polyfill)
     wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 
-    $fa5 = '//use.fontawesome.com/releases/v5.3.1/css/all.css';
+    $fa5 = '//use.fontawesome.com/releases/v5.4.1/css/all.css';
     wp_register_style( 'fa5css', $fa5 , array(), '', 'all' );
     // register main stylesheet
     //wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
