@@ -120,6 +120,11 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
         //   esc_url( get_term_link( $tax, $mytax )), //3
         //   esc_html( $tax->name ) //4
         // );
+$custom_post_type = get_query_var('post_type') ;
+$taxes = get_object_taxonomies($custom_post_type);
+echo '<pre>';
+        var_dump($taxes);
+echo '</pre>';
         $str .= sprintf(
           '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span></li>',
           $liAttribute,
@@ -192,6 +197,39 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
     elseif(is_tax()) {
       // タクソノミー
       $tax_obj = get_queried_object();
+      if( $tax_obj -> parent !=0 ):
+        $tax_ancestors = array_reverse(get_ancestors( $tax_obj->term_id, $tax_obj->taxonomy ));
+        foreach( $tax_ancestors as $tax_ancestor ):
+          $parent_term_obj = get_term($tax_ancestor,$tax_obj->taxonomy);//親要素のオブジェクトを取得
+          ++$position;
+          $str .= sprintf(
+            '<li %1$s itemscope itemtype="%2$s"><a itemprop="url" href="%3$s"><span itemprop="name">%4$s</span></a><meta itemprop="position" content="%5$d" /></li>',
+            $liAttribute,
+            esc_html( $schemaList ),
+            esc_url( get_term_link( $tax_ancestor ) ),//親要素のリンク
+            esc_html( $parent_term_obj->name ),//親要素の名前をフィルター
+            $position
+          );
+        endforeach;
+      endif;
+
+      $str .= sprintf(
+        '<li %1$s itemscope itemtype=%2$s><span %3$s itemprop="name">%4$s</span><meta itemprop="position" content="%5$d" /></li>',
+        $liAttribute,
+        esc_html( $schemaList ),
+        $currentOption,
+        esc_html( $tax_obj->name ),
+        ++$position
+      );
+  echo '<pre>';
+          var_dump($tax_obj);
+          var_dump($tax_obj->taxonomy);
+          var_dump($tax_ancestors);
+          var_dump($tax_ancestor);
+ var_dump(get_term($tax_ancestor,$tax_obj->taxonomy));
+          //var_dump($term_by_tax);
+          //var_dump($tax_tax);
+  echo '</pre>';
     }
     elseif(is_date()) {
       if(is_day() !=0) {
