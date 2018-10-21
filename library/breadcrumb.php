@@ -120,11 +120,6 @@ function breadcrumb($divOption = array("class" => "breadcrumbs")) {
         //   esc_url( get_term_link( $tax, $mytax )), //3
         //   esc_html( $tax->name ) //4
         // );
-$custom_post_type = get_query_var('post_type') ;
-$taxes = get_object_taxonomies($custom_post_type);
-echo '<pre>';
-        var_dump($taxes);
-echo '</pre>';
         $str .= sprintf(
           '<li %1$s itemscope itemtype="%2$s"><span %3$s itemprop="name">%4$s</span></li>',
           $liAttribute,
