@@ -221,15 +221,6 @@ echo '</pre>';
         esc_html( $tax_obj->name ),
         ++$position
       );
-  echo '<pre>';
-          var_dump($tax_obj);
-          var_dump($tax_obj->taxonomy);
-          var_dump($tax_ancestors);
-          var_dump($tax_ancestor);
- var_dump(get_term($tax_ancestor,$tax_obj->taxonomy));
-          //var_dump($term_by_tax);
-          //var_dump($tax_tax);
-  echo '</pre>';
     }
     elseif(is_date()) {
       if(is_day() !=0) {
