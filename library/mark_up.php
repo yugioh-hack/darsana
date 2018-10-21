@@ -253,7 +253,7 @@ add_filter( 'get_the_archive_title', function ($title) {
     $title = single_cat_title( '', false );
   elseif ( is_tag() ) :
     $title = single_tag_title( '', false );
-  elseif ( is_tax('how_to_cat') ) :
+  elseif ( is_tax('how_to_cat') || is_tax('how_to_tag') ) :
     $title = single_term_title( '', false );
   endif;
     return $title;
