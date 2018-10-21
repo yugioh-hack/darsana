@@ -1,4 +1,14 @@
 <?php
+// なるさだの公式ログ出力
+function shard_narsada_logo() {
+  $path_narsada_logo = get_stylesheet_directory_uri().'/library/images/narsada.png';
+  if( $path_narsada_logo ):
+    echo '<span class="common-logo"><img src="'.$path_narsada_logo .'" alt="logo"></span>';
+  else:
+    return;
+  endif;
+}
+
 // HomeのHERO
 if(! function_exists('shard_hero')) {
   function shard_hero() {

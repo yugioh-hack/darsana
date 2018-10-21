@@ -42,6 +42,7 @@
           <div class="container">
             <div class="navbar-brand">
               <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
+              <?php //shard_narsada_logo(); ?>
               <?php if(is_front_page()): ?>
               <h1 class="common-header--title navbar-item" itemscope itemtype="https://schema.org/Organization"><?php bloginfo('name'); ?></h1>
               <?php else: ?>
