@@ -29,6 +29,9 @@ require_once( 'library/limit_category_select.php' );
 // markup
 require_once( 'library/mark_up.php' );
 
+// OGP
+require_once( 'library/ogp.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
