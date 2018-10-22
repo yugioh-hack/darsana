@@ -75,10 +75,10 @@ if(! function_exists('shard_frontPage_posts_list')) {
 if(! function_exists('shard_singlePost_footer_term')) {
   function shard_singlePost_footer_term() {
     if(is_single()):
-        $singlePostTermList  = '<div class="singlePost--footer__info">';
-        $singlePostTermList .= '<p class="singlePost--footer__tagName">%1$s</p>';
-        $singlePostTermList .= '<p class="singlePost--footer__tagLists">%2$s</p>';
-        $singlePostTermList .= '</div>';
+        $singlePostTermList  = '<aside class="singlePost--footer__info">';
+        $singlePostTermList .= '<h4 class="singlePost--footer__termName">%1$s</h4>';
+        $singlePostTermList .= '<ul class="singlePost--footer__termLists">%2$s</ul>';
+        $singlePostTermList .= '</aside>';
 
         $catListName = "Categories";
         $tagListName = "Tags";
@@ -87,7 +87,7 @@ if(! function_exists('shard_singlePost_footer_term')) {
 
       if(get_post_type() == 'post'): //一般的な投稿ならば
         $catLists .= get_the_category_list(' ,');
-        $tagLists .= get_the_tag_list('<span class="singlePost--footer__tagItem">','</span><span class="singlePost--footer__tagItem">','</span>');
+        $tagLists .= get_the_tag_list('<li class="singlePost--footer__termItem--cat">','</li><li class="singlePost--footer__termItem--cat">','</li>');
       else: // カスタム投稿
         $taxonomies = get_post_taxonomies(); //投稿に紐付いたタクソノミーの一覧
         $taxonomy_cat = '';
@@ -103,17 +103,17 @@ if(! function_exists('shard_singlePost_footer_term')) {
         endforeach;
 
         if($taxonomy_cat !== false):
-          $catLists .= get_the_term_list($post->ID, $taxonomy_cat ,'',', ','' );
+          $catLists .= get_the_term_list($post->ID, $taxonomy_cat ,'<li class="singlePost--footer__termItem--cat">','</li><li class="singlePost--footer__termItem--cat">','','</li>');
+          printf( $singlePostTermList,$catListName,$catLists);
         endif;
 
         if($taxonomy_tag !== false):
-          $tagLists .= get_the_term_list($post->ID, $taxonomy_tag ,'<span class="singlePost--footer__tagItem">','</span><span class="singlePost--footer__tagItem">','','</span>');
+          $tagLists .= get_the_term_list($post->ID, $taxonomy_tag ,'<li class="singlePost--footer__termItem--tag">','</li><li class="singlePost--footer__termItem--tag">','','</li>');
+          printf( $singlePostTermList,$tagListName,$tagLists);
         endif;
 
       endif; // get_post_type()
 
-      printf( $singlePostTermList,$catListName,$catLists);
-      printf( $singlePostTermList,$tagListName,$tagLists);
     endif; // is_single
   }
 }
