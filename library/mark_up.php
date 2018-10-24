@@ -12,7 +12,7 @@ function shard_narsada_logo() {
 // HomeのHERO
 if(! function_exists('shard_hero')) {
   function shard_hero() {
-    if( is_home() || is_front_page()||is_single()|| is_singlar('how_to_ingress') ):
+    if( is_home() || is_front_page()||is_single()|| is_singular('how_to_ingress') ):
       $hero = '<section %1$s><div %2$s><div %3$s><div %4$s><h1 %5$s>%6$s</h1></div></div></div></section>';
       $hero_particle_option = array("particles-js");
       $hero_section_option = array("hero","is-info","is-medium","is-bold");
