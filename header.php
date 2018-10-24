@@ -73,5 +73,5 @@
 
       </header>
 
-        <?php breadcrumb(); ?>
         <?php shard_hero(); ?>
+        <?php breadcrumb(); ?>
