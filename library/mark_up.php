@@ -1,4 +1,55 @@
 <?php
+// Q&A記事を共通タグをもとに出力
+function narsada_qa_related_posts() {
+  $taxonomy_slug = 'how_to_tag';
+  $post_type_slug = 'qa_ingress';
+  $current_terms = array();
+  $current_terms = get_the_terms($post->ID, $taxonomy_slug); //投稿につけられたタームを取得
+  echo '<pre>';
+  var_dump($current_terms);
+  echo '</pre>';
+  //この記事がタグを持っているかどうか判別
+  if ( !empty($current_terms) && !is_wp_error($current_terms) ) :
+    $current_term_list = array();
+    foreach ( $current_terms as $current_term ) :
+      $current_term_list[] = $current_term->slug;
+    endforeach;
+
+    // タグが設定されているならば
+    if( !empty($current_term_list) ):
+      $term_args = array(
+          'post_type'      => $post_type_slug,
+          'taxonomy'       => $taxonomy_slug,
+          'tax_query'      => array(
+              array(
+                  'taxonomy' => $taxonomy_slug,
+                  'field'    => 'slug',
+                  'terms'    => $current_term_list,
+                    ),
+                                   ),
+          'posts_per_page' => -1,//すべて表示
+      );
+    else:
+      return;
+    endif;
+
+    $qa_posts = new WP_Query( $term_args );
+     //関連する記事があるかどうか判別
+    if( $qa_posts -> have_posts() ) :
+      //関連するQ&Aがあるならば表示
+      echo '<dl>';
+      while($qa_posts -> have_posts()):
+        $qa_posts->the_post();
+          echo '<dt>' .get_the_title(). '</dt>';
+          echo '<dd>' .get_the_content(). '</dd>';
+      endwhile;
+      wp_reset_postdata();
+    endif;
+      echo '</dl>';
+  else:
+    return;
+  endif;
+}
 // なるさだの公式ログ出力
 function shard_narsada_logo() {
   $path_narsada_logo = get_stylesheet_directory_uri().'/library/images/narsada.png';
@@ -103,12 +154,12 @@ if(! function_exists('shard_singlePost_footer_term')) {
         endforeach;
 
         if($taxonomy_cat !== false):
-          $catLists .= get_the_term_list($post->ID, $taxonomy_cat ,'<li class="singlePost--footer__termItem--cat">','</li><li class="singlePost--footer__termItem--cat">','','</li>');
+          $catLists .= get_the_term_list($post->ID, $taxonomy_cat ,'<li class="singlePost--footer__termItem--cat">','</li><li class="singlePost--footer__termItem--cat">','</li>');
           printf( $singlePostTermList,$catListName,$catLists);
         endif;
 
         if($taxonomy_tag !== false):
-          $tagLists .= get_the_term_list($post->ID, $taxonomy_tag ,'<li class="singlePost--footer__termItem--tag">','</li><li class="singlePost--footer__termItem--tag">','','</li>');
+          $tagLists .= get_the_term_list($post->ID, $taxonomy_tag ,'<li class="singlePost--footer__termItem--tag">','</li><li class="singlePost--footer__termItem--tag">','</li>');
           printf( $singlePostTermList,$tagListName,$tagLists);
         endif;
 

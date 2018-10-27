@@ -58,6 +58,7 @@
                 </section> <?php // end article section ?>
 
                 <footer class="singlePost--footer">
+                  <?php narsada_qa_related_posts(); ?>
                   <?php shard_singlePost_footer_term(); ?>
                   <?php custom_prev_next(); ?>
                   <?php //the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
