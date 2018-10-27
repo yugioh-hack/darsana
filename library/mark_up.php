@@ -5,9 +5,6 @@ function narsada_qa_related_posts() {
   $post_type_slug = 'qa_ingress';
   $current_terms = array();
   $current_terms = get_the_terms($post->ID, $taxonomy_slug); //投稿につけられたタームを取得
-  echo '<pre>';
-  var_dump($current_terms);
-  echo '</pre>';
   //この記事がタグを持っているかどうか判別
   if ( !empty($current_terms) && !is_wp_error($current_terms) ) :
     $current_term_list = array();
