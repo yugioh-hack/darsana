@@ -27,7 +27,7 @@ require_once( 'library/sns_share.php' );
 require_once( 'library/limit_category_select.php' );
 
 // markup
-require_once( 'library/mark_up.php' );
+require_once( 'library/markup.php' );
 
 // OGP
 require_once( 'library/ogp.php' );
