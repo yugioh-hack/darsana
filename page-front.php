@@ -30,7 +30,7 @@
             </main>
 
           <aside class="front-aside--postList">
-            <h3 class="front-aside__title">更新記事</h3>
+            <h3 class="front-aside__title">更新履歴</h3>
             <?php shard_frontPage_posts_list(); ?>
           </aside>
         </div> <!-- #content-inner -->
