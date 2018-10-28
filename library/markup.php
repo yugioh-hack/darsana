@@ -34,15 +34,20 @@ function narsada_qa_related_posts() {
      //関連する記事があるかどうか判別
     if( $qa_posts -> have_posts() ) :
       //関連するQ&Aがあるならば表示
-      echo '<dl>';
+      echo '<section>';
+      echo '<h4 class="singlePost--qa--title">FAQ</h4>';
+      echo '<dl class="singlePost--qa--dl">';
       while($qa_posts -> have_posts()):
         $qa_posts->the_post();
-          echo '<dt>' .get_the_title(). '</dt>';
-          echo '<dd>' .get_the_content(). '</dd>';
+          echo '<dt class="singlePost--qa--dt">' .get_the_title(). '</dt>';
+          // apply_filtersで改行を含むデータを取得する
+          //echo '<dd class="singlePost--qa--dd">' .apply_filters('the_content',get_the_content()). '</dd>';
+          echo '<dd class="singlePost--qa--dd">' .get_the_content(). '</dd>';
       endwhile;
       wp_reset_postdata();
     endif;
       echo '</dl>';
+      echo '</section>';
   else:
     return;
   endif;
