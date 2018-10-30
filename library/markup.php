@@ -45,9 +45,9 @@ function narsada_qa_related_posts() {
           echo '<dd class="singlePost--qa--dd">' .get_the_content(). '</dd>';
       endwhile;
       wp_reset_postdata();
-    endif;
       echo '</dl>';
       echo '</section>';
+    endif;
   else:
     return;
   endif;
