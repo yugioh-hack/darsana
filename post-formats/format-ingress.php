@@ -29,7 +29,7 @@
                   <h1 class="singlePost--title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
                   <?php sns_share_button(); ?>
 
-                </header> <?php // end article header ?>
+                </header> <?php // singlePost--header ?>
 
                 <section class="content singlePost--content" itemprop="articleBody">
                   <?php
@@ -55,15 +55,15 @@
                       'link_after'  => '</span>',
                     ) );
                   ?>
-                </section> <?php // end article section ?>
+                </section> <?php // singlePost--content ?>
 
                 <footer class="singlePost--footer">
                   <?php narsada_qa_related_posts(); ?>
                   <?php shard_singlePost_footer_term(); ?>
                   <?php custom_prev_next(); ?>
                   <?php //the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
-                </footer> <?php // end article footer ?>
+                </footer> <?php // # singlePost--footer ?>
 
                 <?php //comments_template(); ?>
 
-              </article> <?php // end article ?>
+              </article> <?php // end singlePost--article ?>
