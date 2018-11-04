@@ -1,5 +1,5 @@
-        <div id="sidebar1" class="sidebar column is-4" role="complementary">
-
+        <aside id="sidebar1" class="sidebar column is-4" role="complementary">
+          <h2 class="screen-reader-text">Sidebar</h2>
           <?php if ( is_active_sidebar( 'sidebar1' ) ) : ?>
 
             <?php dynamic_sidebar( 'sidebar1' ); ?>
@@ -18,4 +18,4 @@
 
           <?php endif; ?>
 
-        </div>
+        </aside>
