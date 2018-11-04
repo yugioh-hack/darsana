@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-      <section class="container section single-section">
+      <div class="container section single-section">
         <div class="columns is-centered">
 
           <div class="column is-8">
@@ -49,6 +49,6 @@
 
         </div>
 
-      </section>
+      </div>
 
 <?php get_footer(); ?>
