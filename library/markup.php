@@ -66,32 +66,33 @@ function shard_narsada_logo() {
 if(! function_exists('shard_hero')) {
   function shard_hero() {
     if( is_home() || is_front_page()||is_single()|| is_singular('how_to_ingress') ):
-      $hero = '<section %1$s><div %2$s><div %3$s><div %4$s><h1 %5$s>%6$s</h1></div></div></div></section>';
+      $hero = '<div %1$s><div %2$s><div %3$s><section %4$s><h1 %5$s>%6$s</h1></section></div></div></div>';
       $hero_particle_option = array("particles-js");
       $hero_section_option = array("hero","is-info","is-medium","is-bold");
-      $hero_body_option = array("hero-body columns is-centered");
+      //$hero_section_option = array("hero","is-gradient","is-medium","is-bold");
+      $hero_body_option = array("hero-body","columns","is-centered");
       $hero_container_option = array("container");
-      $hero_title_option = array("common-hero--title");
+      $hero_description_option = array("common-hero--description");
 
       if ( get_bloginfo('description') ) :
-        $hero_info = get_bloginfo ( 'description' );
+        $hero_description = get_bloginfo ( 'description' );
       else:
-        $hero_info = 'The world around you is not what it seems.';
+        $hero_description = 'The world around you is not what it seems.';
       endif;
 
       $hero_particle_attribute = sprintf('id="%1$s"', implode(' ',$hero_particle_option));
       $hero_section_attribute = sprintf('class="%1$s"', implode(' ',$hero_section_option));
       $hero_body_attribute = sprintf('class="%1$s"', implode(' ',$hero_body_option));
       $hero_container_attribute = sprintf('class="%1$s"', implode(' ',$hero_container_option));
-      $hero_title_attribute = sprintf('class="%1$s"', implode(' ',$hero_title_option));
+      $hero_title_attribute = sprintf('class="%1$s"', implode(' ',$hero_description_option));
 
       echo sprintf( $hero,
           $hero_section_attribute,
           $hero_particle_attribute,
           $hero_body_attribute,
           $hero_container_attribute,
-          $hero_title_attribute,
-          $hero_info
+          $hero_description_attribute,
+          $hero_description
       );
 
     else:
@@ -275,12 +276,12 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
 
         // ポストが存在するならば
         if($tax_posts):
-          echo '<section class="column is-12-mobile is-6-tablet is-4-desktop front-section">';
+          echo '<div class="column is-12-mobile is-6-tablet is-4-desktop front-section">';
           echo  '<div class="front-section__columns columns is-mobile">';
           echo  '<div class="column is-2">';
           echo    '<span class="front-icon">'.shard_fontawesome_random($taxonomy->term_id).'</span>'; // アイコンをtermi_idを元にしてランダムに生成する
           echo  '</div>';
-          echo  '<div class="front-section__content column">';
+          echo  '<section class="front-section__content column">';
           echo    '<h2 class="front-heading" id="' . esc_html($taxonomy->slug) . '">';
           echo      esc_html($taxonomy->name);
           echo    '</h2>';
@@ -291,9 +292,9 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
             wp_reset_postdata();
           echo     '</ul>';
           echo      '<div class="front-viewall"><a href="'. $url_taxonomy .'"><i class="fas fa-arrow-circle-right"></i>View All</a></div>';
-          echo    '</div>';// #front-section__content
+          echo    '</section>';// #front-section__content
           echo   '</div>';
-          echo '</section>';
+          echo '</div>';
         endif;
       endforeach;
     }
