@@ -32,6 +32,9 @@ require_once( 'library/markup.php' );
 // OGP
 require_once( 'library/ogp.php' );
 
+// Short Code
+require_once( 'library/shortcode.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
