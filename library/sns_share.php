@@ -12,13 +12,13 @@ function sns_share_button() {
 
   $twitter_share = '<a class="button sns-button sns-button--twitter" href="http://twitter.com/share?text=' . get_the_title() .  '&url=' . $post_url . '" target="_blank">'. $twitter_text .'</a>';
   $fb_share      = '<a class="button sns-button sns-button--facebook" href="https://www.facebook.com/sharer/sharer.php?u=' . $post_url . '&t='. get_the_title() . '"  target="_blank">' . $fb_count . '</a>';
-  $gplus_share   = '<a class="button sns-button sns-button--googleplus" href="https://plus.google.com/share?url=' . $post_url . '" target="_blank">' . $google_plus_one_count . '</a>';
+  //$gplus_share   = '<a class="button sns-button sns-button--googleplus" href="https://plus.google.com/share?url=' . $post_url . '" target="_blank">' . $google_plus_one_count . '</a>';
   $hatebu_share  = '<a class="button sns-button sns-button--hatena" href="http://b.hatena.ne.jp/entry/'. $post_url . '" target="_blank">' . $hatena_count . '</a>';
 
   $button  = '';
   $button .= $twitter_share;
   $button .= $fb_share;
-  $button .= $gplus_share;
+  //$button .= $gplus_share;
   $button .= $hatebu_share;
 
   $str = '<div class="sns-container">'.$button.'</div>';
