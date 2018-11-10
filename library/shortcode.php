@@ -2,7 +2,7 @@
 /*
  * short code
  */
-add_shortcode('ingress_item_2', 'sc_item_2');
+add_shortcode('ingress_item', 'sc_item_2');
 function sc_item_2() {
     $item_name = '';
     $item_name = get_post_meta(get_the_ID(), 'item_name', true);
@@ -75,7 +75,6 @@ function sc_item_2() {
     endif;
 }
 
-add_shortcode('ingress_item', 'sc_item');
 function sc_item() {
     $item_name = '';
     $item_name = get_post_meta(get_the_ID(), 'item_name', true);

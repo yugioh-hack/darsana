@@ -172,6 +172,45 @@ if(! function_exists('shard_singlePost_footer_term')) {
   }
 }
 
+if(! function_exists('shard_ingress_svg')) {
+  function shard_ingress_svg($term_id) {
+    $ingress_svg = get_term_meta($term_id,$taxonomy,false);
+    $svg_list = [ // svgのリスト
+      'XM',
+      'abadon',
+      'attack',
+      'barrier',
+      'begin',
+      'capture',
+      'chaos',
+      'clearall',
+      'discover',
+      'harmony',
+      'imperfect',
+      'journey',
+      'leberate',
+      'openall',
+      'outside',
+      'path',
+      'safety',
+      'search',
+      'shapers',
+      'them'
+    ];
+    // termのラジオボタンにsvg画像が設定されているか
+    $svg = $ingress_svg['svg'][0];
+    // 定義されているなら、その画像を出す
+    if($svg !== '' && in_array($svg,$svg_list)):
+      $svg_path = get_template_directory_uri().'/library/images/svg/'.$svg.'.svg';
+      echo '<img src="'.$svg_path.'" width="120">';
+    //未設定ならallグリフを返す
+    else:
+      $svg_all_path = get_template_directory_uri().'/library/images/svg/'.'all.svg';
+      echo '<img src="'.$svg_all_path.'" width="120">';
+    endif;
+  }
+}
+
 // term_id によってfontawesomeの表示を変更する
 if(! function_exists('shard_fontawesome_random')) {
   function shard_fontawesome_random($term_id) {
@@ -279,7 +318,8 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
           echo '<div class="column is-12-mobile is-6-tablet is-4-desktop front-section">';
           echo  '<div class="front-section__columns columns is-mobile">';
           echo  '<div class="column is-2">';
-          echo    '<span class="front-icon">'.shard_fontawesome_random($taxonomy->term_id).'</span>'; // アイコンをtermi_idを元にしてランダムに生成する
+          //echo    '<span class="front-icon">'.shard_fontawesome_random($taxonomy->term_id).'</span>'; // アイコンをtermi_idを元にしてランダムに生成する
+          echo    shard_ingress_svg($taxonomy->term_id); // アイコンをtermi_idを元にして生成する
           echo  '</div>';
           echo  '<section class="front-section__content column">';
           echo    '<h2 class="front-heading" id="' . esc_html($taxonomy->slug) . '">';
