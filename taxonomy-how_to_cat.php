@@ -5,10 +5,13 @@
 
             <main id="main" class="column is-8" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
               <header class="taxonomy-header">
-                <?php
-                the_archive_title( '<h1 class="taxonomy-title">', '</h1>' );
-                the_archive_description( '<div class="taxonomy-description">', '</div>' );
-                ?>
+                <div class="taxonomy-header__titleHeader">
+                  <figure class="taxonomy-svg">
+                    <?php shard_ingress_svg(get_queried_object_id(),18); ?>
+                  </figure>
+                    <?php the_archive_title( '<h1 class="taxonomy-title">', '</h1>' ); ?>
+                </div>
+                <?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
               </header>
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
