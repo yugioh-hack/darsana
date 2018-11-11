@@ -1,4 +1,57 @@
 <?php
+
+//
+if(! function_exists('shard_get_custom_posts')) {
+  function shard_get_custom_posts() {
+    $post_type     = 'info'; // カスタム投稿のスラッグ名を入れる
+    $taxonomy_name = 'info_cat'; // タクソノミーのスラッグ名を入れる
+    $args = array(
+        'orderby' => 'name',
+        'hierarchical' => false
+    );
+    $taxonomys = get_terms( $taxonomy_name, $args);
+    if(!is_wp_error($taxonomys) && count($taxonomys)):
+      foreach($taxonomys as $taxonomy):
+        $url_taxonomy = get_term_link($taxonomy->slug, $taxonomy_name);
+        $tax_get_array = array(
+            'post_type' => $post_type, //表示したいカスタム投稿
+            'posts_per_page' => 5,//表示件数
+            // https://blog.nakachon.com/2014/10/27/dont-use-name-field-tax-query-in-japanese/
+            // termsにはidを, fieldにはterm_idを入れるべき
+            'tax_query' => array(
+                array(
+                      'taxonomy' => $taxonomy_name,
+                      'terms'     => array($taxonomy -> term_id),
+                      'field'    => 'term_id',
+                      'operator' => 'IN',
+                      'include_children' => true
+                     )
+            )
+        );
+        $tax_posts = get_posts( $tax_get_array );
+
+        // ポストが存在するならば
+        if($tax_posts):
+          $svg_all_path = get_template_directory_uri().'/library/images/svg/'.'all_black.svg';
+          echo    '<div class="front-infomation">';
+          echo      '<div class="front-infomation__header">';
+          echo        '<figure class="front-infomation__figure">';
+          echo          '<img class="front-infomation__img" src="'.$svg_all_path.'">';
+          echo        '</figure>';
+          echo        '<h1 class="front-infomation__title">お知らせ</h1>';
+          echo      '</div>';
+          echo      '<ul class="front-infomation__list">';
+            foreach($tax_posts as $tax_post):
+               echo '<li class="front-infomation__listItem"><span class="front-infomation__listIcon">' . strtoupper($taxonomy->slug) . '</span><a href="'. get_permalink($tax_post->ID).'">'. get_the_title($tax_post->ID).'</a></li>';
+            endforeach;
+            wp_reset_postdata();
+          echo      '</ul>';
+          echo    '</div>';// #front-infomation__content
+        endif;
+      endforeach;
+    endif;
+  }
+}
 // Q&A記事を共通タグをもとに出力
 function narsada_qa_related_posts() {
   $taxonomy_slug = 'how_to_tag';
@@ -317,21 +370,22 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
         if($tax_posts):
           echo '<div class="column is-12-mobile is-6-tablet is-4-desktop front-section">';
           echo  '<div class="front-section__columns columns is-mobile">';
-          echo  '<div class="column is-2">';
-          //echo    '<span class="front-icon">'.shard_fontawesome_random($taxonomy->term_id).'</span>'; // アイコンをtermi_idを元にしてランダムに生成する
-          echo    shard_ingress_svg($taxonomy->term_id); // アイコンをtermi_idを元にして生成する
-          echo  '</div>';
           echo  '<section class="front-section__content column">';
-          echo    '<h2 class="front-heading" id="' . esc_html($taxonomy->slug) . '">';
-          echo      esc_html($taxonomy->name);
-          echo    '</h2>';
-          echo    '<ul class="front-list">';
+          echo    '<div class="front-section__header">';
+          echo      '<figure class="front-section__figure">';
+                      shard_ingress_svg($taxonomy->term_id); // アイコンをtermi_idを元にして生成する
+          echo      '</figure>';
+          echo      '<h2 class="front-section__title" id="' . esc_html($taxonomy->slug) . '">';
+          echo        esc_html($taxonomy->name);
+          echo      '</h2>';
+          echo    '</div>';
+          echo    '<ul class="front-section__list">';
             foreach($tax_posts as $tax_post):
-               echo '<li class="front-listItem"><a href="'. get_permalink($tax_post->ID).'">'. get_the_title($tax_post->ID).'</a></li>';
+               echo '<li class="front-section__listItem"><a href="'. get_permalink($tax_post->ID).'">'. get_the_title($tax_post->ID).'</a></li>';
             endforeach;
             wp_reset_postdata();
           echo     '</ul>';
-          echo      '<div class="front-viewall"><a href="'. $url_taxonomy .'"><i class="fas fa-arrow-circle-right"></i>View All</a></div>';
+          echo      '<div class="front-section__viewall"><a href="'. $url_taxonomy .'"><i class="fas fa-arrow-circle-right"></i>View All</a></div>';
           echo    '</section>';// #front-section__content
           echo   '</div>';
           echo '</div>';

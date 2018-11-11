@@ -19,11 +19,19 @@
       <div class="columns is-centered" id="content">
 
         <div class="column" id="content-inner">
-
+          <article class="front-infomation">
+            <?php shard_get_custom_posts(); ?>
+          </article>
           <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class('columns is-multiline front-article'); ?> role="article" itemscope itemtype="https://schema.org/BlogPosting">
-              <h1 class="front-sections__title">Ingressの遊び方</h1>
+              <div class="front-sections__header">
+                <figure class="front-sections__figure">
+                  <?php $svg_all_path = get_template_directory_uri().'/library/images/svg/'.'all_black.svg'; ?>
+                  <?php echo '<img class="front-sections__img" src="'. $svg_all_path . '">' ?>
+                </figure>
+                <h1 class="front-sections__title">Ingressの遊び方</h1>
+              </div>
               <?php shard_get_archive_custom_posts(); ?>
             </article>
 
