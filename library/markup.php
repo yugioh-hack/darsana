@@ -65,7 +65,7 @@ function shard_narsada_logo() {
 // HomeのHERO
 if(! function_exists('shard_hero')) {
   function shard_hero() {
-    if( is_home() || is_front_page()||is_single()|| is_singular('how_to_ingress') ):
+    //if( is_home() || is_front_page()||is_single()|| is_singular('how_to_ingress') ):
       $hero = '<div %1$s><div %2$s><div %3$s><section %4$s><h1 %5$s>%6$s</h1></section></div></div></div>';
       $hero_particle_option = array("particles-js");
       $hero_section_option = array("hero","is-info","is-medium","is-bold");
@@ -95,9 +95,9 @@ if(! function_exists('shard_hero')) {
           $hero_description
       );
 
-    else:
-      return;
-    endif;
+    //else:
+    //  return;
+    //endif;
   }
 }
 
@@ -173,7 +173,7 @@ if(! function_exists('shard_singlePost_footer_term')) {
 }
 
 if(! function_exists('shard_ingress_svg')) {
-  function shard_ingress_svg($term_id) {
+  function shard_ingress_svg($term_id, $size = 120) {
     $ingress_svg = get_term_meta($term_id,$taxonomy,false);
     $svg_list = [ // svgのリスト
       'XM',
@@ -202,11 +202,11 @@ if(! function_exists('shard_ingress_svg')) {
     // 定義されているなら、その画像を出す
     if($svg !== '' && in_array($svg,$svg_list)):
       $svg_path = get_template_directory_uri().'/library/images/svg/'.$svg.'.svg';
-      echo '<img src="'.$svg_path.'" width="120">';
+      echo '<img src="'.$svg_path.'" width=".$size.">';
     //未設定ならallグリフを返す
     else:
       $svg_all_path = get_template_directory_uri().'/library/images/svg/'.'all.svg';
-      echo '<img src="'.$svg_all_path.'" width="120">';
+      echo '<img src="'.$svg_all_path.'" width=".$size.">';
     endif;
   }
 }
