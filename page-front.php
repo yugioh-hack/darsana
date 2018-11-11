@@ -15,19 +15,20 @@
 
 <?php get_header(); ?>
   <div class="container front-container">
-    <section class="section front-sections">
+    <div class="section front-sections">
       <div class="columns is-centered" id="content">
 
         <div class="column" id="content-inner">
 
-            <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
+          <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class('columns is-multiline front-article'); ?> role="article" itemscope itemtype="https://schema.org/BlogPosting">
-                <?php shard_get_archive_custom_posts(); ?>
-              </article>
+            <article id="post-<?php the_ID(); ?>" <?php post_class('columns is-multiline front-article'); ?> role="article" itemscope itemtype="https://schema.org/BlogPosting">
+              <h1 class="front-sections__title">Ingressの遊び方</h1>
+              <?php shard_get_archive_custom_posts(); ?>
+            </article>
 
 
-            </main>
+          </main>
 
           <aside class="front-aside--postList">
             <h3 class="front-aside__title">更新履歴</h3>
@@ -37,9 +38,9 @@
 
 
 
-      </div> <!-- #content -->
-    </section>
-  </div> <!-- #container -->
+      </div> <?php #content ?>
+    </div> <?php #section front-sections ?>
+  </div> <?php #container front-container ?>
 
 
 <?php get_footer(); ?>
