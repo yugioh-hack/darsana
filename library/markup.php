@@ -2,9 +2,9 @@
 
 //
 if(! function_exists('shard_get_custom_posts')) {
-  function shard_get_custom_posts() {
-    $post_type     = 'info'; // カスタム投稿のスラッグ名を入れる
-    $taxonomy_name = 'info_cat'; // タクソノミーのスラッグ名を入れる
+  function shard_get_custom_posts($post_type ='info',$taxonomy_name='info_cat',$info_title='おしらせ') {
+    //$post_type     = 'info'; // カスタム投稿のスラッグ名を入れる
+    //$taxonomy_name = 'info_cat'; // タクソノミーのスラッグ名を入れる
     $args = array(
         'orderby' => 'name',
         'hierarchical' => false
@@ -38,7 +38,7 @@ if(! function_exists('shard_get_custom_posts')) {
           echo        '<figure class="front-infomation__figure">';
           echo          '<img class="front-infomation__img" src="'.$svg_all_path.'">';
           echo        '</figure>';
-          echo        '<h1 class="front-infomation__title">お知らせ</h1>';
+          echo        '<h1 class="front-infomation__title">'.$info_title.'</h1>';
           echo      '</div>';
           echo      '<ul class="front-infomation__list">';
             foreach($tax_posts as $tax_post):
@@ -163,7 +163,7 @@ if(! function_exists('shard_frontPage_posts_list')) {
       'offset'           => 0,
       'orderby'          => 'modified', // 更新順
       'order'            => 'DESC',
-      'post_type'        => array( 'post','how_to_ingress'),
+      'post_type'        => array( 'post','how_to_ingress','anime','info'),
       'post_status'      => 'publish',
       'suppress_filters' => true
     );
