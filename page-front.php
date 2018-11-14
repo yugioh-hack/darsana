@@ -35,6 +35,9 @@
               <?php shard_get_archive_custom_posts(); ?>
             </article>
 
+            <article class="front-infomation">
+              <?php shard_get_custom_posts('anime','anime_cat','アニメ'); ?>
+            </article>
 
           </main>
 
