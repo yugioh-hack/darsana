@@ -368,7 +368,7 @@ if ( ! function_exists( 'shard_get_archive_custom_posts' ) ) {
 
         // ポストが存在するならば
         if($tax_posts):
-          echo '<div class="column is-12-mobile is-6-tablet is-4-desktop front-section">';
+          echo '<div class="column is-12-mobile is-6-tablet is-6-desktop front-section">';
           echo  '<div class="front-section__columns columns is-mobile">';
           echo  '<section class="front-section__content column">';
           echo    '<div class="front-section__header">';
