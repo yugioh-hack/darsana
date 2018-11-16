@@ -1,4 +1,5 @@
 <?php
+require_once( 'markup/single_meta.php' );
 
 //
 if(! function_exists('shard_get_custom_posts')) {

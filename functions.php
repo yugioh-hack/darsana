@@ -35,6 +35,9 @@ require_once( 'library/ogp.php' );
 // Short Code
 require_once( 'library/shortcode.php' );
 
+// user contact
+require_once( 'library/user_contact_methods.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 

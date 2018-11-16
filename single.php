@@ -3,7 +3,7 @@
         <div class="columns is-centered">
 
           <div class="column is-8">
-            <main id="main" class="singlePost--mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
+            <main id="main" class="singlePost_mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
