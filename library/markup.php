@@ -1,6 +1,44 @@
 <?php
 require_once( 'markup/single_meta.php' );
 
+// 時系列でソートしない問題を解消
+if(! function_exists('narsada_get_custom_posts')) {
+  function narsada_get_custom_posts($default_post_type ='info',
+                                    $default_taxonomy = 'info_cat',
+                                    $info_title='おしらせ') {
+
+    $svg_all_path = get_template_directory_uri().'/library/images/svg/'.'all_black.svg';
+    echo '<div class="front-infomation">';
+    echo   '<div class="front-infomation__header">';
+    echo     '<figure class="front-infomation__figure">';
+    echo       '<img class="front-infomation__img" src="'.$svg_all_path.'">';
+    echo     '</figure>';
+    echo     '<h1 class="front-infomation__title">'.$info_title.'</h1>';
+    echo   '</div>';
+    echo   '<ul class="front-infomation__list">';
+
+      $args = array(
+              'numberposts' => 5,            //表示（取得）する記事の数
+              'post_type' => $default_post_type      //投稿タイプの指定
+          );
+    $customPosts = get_posts( $args );
+
+    if( $customPosts ) :
+      foreach( $customPosts as $post ) : setup_postdata( $post );
+        $term = wp_get_post_terms($post->ID,$default_taxonomy); //投稿IDからtermを配列として取得
+        echo '<li class="front-infomation__listItem"><span class="front-infomation__listIcon">' . strtoupper($term[0]->slug) . '</span><a href="'. get_permalink($post ->ID).'">'.get_the_title($post->ID).'</a></li>';
+      endforeach;
+    else:
+      echo '<li><p>記事はまだありません。</p></li>';
+    endif;
+
+    wp_reset_postdata(); //クエリのリセット
+
+    echo  '</ul>';
+    echo '</div>';
+  }
+}
+//
 //
 if(! function_exists('shard_get_custom_posts')) {
   function shard_get_custom_posts($post_type ='info',$taxonomy_name='info_cat',$info_title='おしらせ') {
@@ -10,8 +48,10 @@ if(! function_exists('shard_get_custom_posts')) {
         'orderby' => 'name',
         'hierarchical' => false
     );
+
     $taxonomys = get_terms( $taxonomy_name, $args);
     if(!is_wp_error($taxonomys) && count($taxonomys)):
+      $post_list = '';
       foreach($taxonomys as $taxonomy):
         $url_taxonomy = get_term_link($taxonomy->slug, $taxonomy_name);
         $tax_get_array = array(
@@ -33,23 +73,28 @@ if(! function_exists('shard_get_custom_posts')) {
 
         // ポストが存在するならば
         if($tax_posts):
-          $svg_all_path = get_template_directory_uri().'/library/images/svg/'.'all_black.svg';
-          echo    '<div class="front-infomation">';
-          echo      '<div class="front-infomation__header">';
-          echo        '<figure class="front-infomation__figure">';
-          echo          '<img class="front-infomation__img" src="'.$svg_all_path.'">';
-          echo        '</figure>';
-          echo        '<h1 class="front-infomation__title">'.$info_title.'</h1>';
-          echo      '</div>';
-          echo      '<ul class="front-infomation__list">';
-            foreach($tax_posts as $tax_post):
-               echo '<li class="front-infomation__listItem"><span class="front-infomation__listIcon">' . strtoupper($taxonomy->slug) . '</span><a href="'. get_permalink($tax_post->ID).'">'. get_the_title($tax_post->ID).'</a></li>';
-            endforeach;
-            wp_reset_postdata();
-          echo      '</ul>';
-          echo    '</div>';// #front-infomation__content
+          foreach($tax_posts as $tax_post):// リストを作る
+            $post_list .= '<li class="front-infomation__listItem"><span class="front-infomation__listIcon">' . strtoupper($taxonomy->slug) . '</span><a href="'. get_permalink($tax_post->ID).'">'. get_the_title($tax_post->ID).'</a></li>';
+          endforeach;
         endif;
+        wp_reset_postdata();
       endforeach;
+
+      // リストがあるなら
+      if(! $post_list !== ''):
+        $svg_all_path = get_template_directory_uri().'/library/images/svg/'.'all_black.svg';
+        echo    '<div class="front-infomation">';
+        echo      '<div class="front-infomation__header">';
+        echo        '<figure class="front-infomation__figure">';
+        echo          '<img class="front-infomation__img" src="'.$svg_all_path.'">';
+        echo        '</figure>';
+        echo        '<h1 class="front-infomation__title">'.$info_title.'</h1>';
+        echo      '</div>';
+        echo      '<ul class="front-infomation__list">';
+        echo      $post_list;
+        echo      '</ul>';
+        echo    '</div>';// #front-infomation__content
+      endif;
     endif;
   }
 }
