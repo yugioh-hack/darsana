@@ -21,34 +21,51 @@ function shard_narsada_logo() {
 if(! function_exists('shard_hero')) {
   function shard_hero() {
     //if( is_home() || is_front_page()||is_single()|| is_singular('how_to_ingress') ):
-      $hero = '<div %1$s><div %2$s><div %3$s><section %4$s><h1 %5$s>%6$s</h1></section></div></div></div>';
-      $hero_particle_option = array("particles-js");
-      $hero_section_option = array("hero","is-info","is-medium","is-bold");
-      //$hero_section_option = array("hero","is-gradient","is-medium","is-bold");
-      $hero_body_option = array("hero-body","columns","is-centered");
-      $hero_container_option = array("container");
-      $hero_description_option = array("common-hero--description");
+    $hero  = '<div %1$s>';                 // $hero_section
+    $hero .=   '<div %2$s>';               // $particles
+    $hero .=     '<div %3$s>';             // $hero_body
+    $hero .=       '<section %4$s>';       // $hero_container
+    $hero .=         '<h1 %5$s>%6$s</h1>'; // $hero_title $hero_description
+    $hero .=         '%7$s';               // $hero_widget
+    $hero .=       '</section>';
+    $hero .=     '</div>';
+    $hero .=   '</div>';
+    $hero .= '</div>';
 
-      if ( get_bloginfo('description') ) :
-        $hero_description = get_bloginfo ( 'description' );
-      else:
-        $hero_description = 'The world around you is not what it seems.';
-      endif;
+    $hero_section_option = array("hero","is-info","is-medium","is-bold");
+    $hero_particle_option = array("particles-js");
+    //$hero_section_option = array("hero","is-gradient","is-medium","is-bold");
+    $hero_body_option = array("hero-body","columns","is-centered");
+    $hero_container_option = array("container");
+    $hero_title_option = array("common-hero--description","title");
 
-      $hero_particle_attribute = sprintf('id="%1$s"', implode(' ',$hero_particle_option));
-      $hero_section_attribute = sprintf('class="%1$s"', implode(' ',$hero_section_option));
-      $hero_body_attribute = sprintf('class="%1$s"', implode(' ',$hero_body_option));
-      $hero_container_attribute = sprintf('class="%1$s"', implode(' ',$hero_container_option));
-      $hero_title_attribute = sprintf('class="%1$s"', implode(' ',$hero_description_option));
+    if ( get_bloginfo('description') ) :
+      $hero_description = get_bloginfo ( 'description' );
+    else:
+      $hero_description = 'The world around you is not what it seems.';
+    endif;
 
-      echo sprintf( $hero,
-          $hero_section_attribute,
-          $hero_particle_attribute,
-          $hero_body_attribute,
-          $hero_container_attribute,
-          $hero_description_attribute,
-          $hero_description
-      );
+    $hero_widget  = '<div class="common-hero--widget">';
+    $hero_widget .= '<a class="common-hero--widget__button" href="https://ingress.com/">Ingress 公式ページ</a>';
+    $hero_widget .= '<a class="common-hero--widget__button" href="https://support.ingress.com/hc/ja">Ingress Helpページ</a>';
+    $hero_widget .= '<a class="common-hero--widget__button" href="https://www.reddit.com/r/IngressPrimeFeedback/">Reddit / IngressPrimeFeedback</a>';
+    $hero_widget .= '</div>';
+
+    $hero_particle_attribute = sprintf('id="%1$s"', implode(' ',$hero_particle_option));
+    $hero_section_attribute = sprintf('class="%1$s"', implode(' ',$hero_section_option));
+    $hero_body_attribute = sprintf('class="%1$s"', implode(' ',$hero_body_option));
+    $hero_container_attribute = sprintf('class="%1$s"', implode(' ',$hero_container_option));
+    $hero_title_attribute = sprintf('class="%1$s"', implode(' ',$hero_title_option));
+
+    echo sprintf( $hero,
+        $hero_section_attribute,
+        $hero_particle_attribute,
+        $hero_body_attribute,
+        $hero_container_attribute,
+        $hero_title_attribute,
+        $hero_description,
+        $hero_widget
+    );
 
     //else:
     //  return;
