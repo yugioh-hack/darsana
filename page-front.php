@@ -20,7 +20,8 @@
 
         <div class="column" id="content-inner">
           <article class="front-infomation">
-            <?php shard_get_custom_posts(); ?>
+            <?php narsada_get_custom_posts(); ?>
+            <?php //shard_get_custom_posts(); ?>
           </article>
           <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
@@ -36,7 +37,8 @@
             </article>
 
             <article class="front-infomation">
-              <?php shard_get_custom_posts('anime','anime_cat','アニメ'); ?>
+              <?php narsada_get_custom_posts('anime','anime_cat','アニメ'); ?>
+              <?php //shard_get_custom_posts('anime','anime_cat','アニメ'); ?>
             </article>
 
           </main>
