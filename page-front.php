@@ -19,10 +19,6 @@
       <div class="columns is-centered" id="content">
 
         <div class="column" id="content-inner">
-          <article class="front-infomation">
-            <?php narsada_get_custom_posts(); ?>
-            <?php //shard_get_custom_posts(); ?>
-          </article>
           <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/Blog">
 
             <article id="post-<?php the_ID(); ?>" <?php post_class('columns is-multiline front-article'); ?> role="article" itemscope itemtype="https://schema.org/BlogPosting">
@@ -36,16 +32,32 @@
               <?php shard_get_archive_custom_posts(); ?>
             </article>
 
+
             <article class="front-infomation">
-              <?php narsada_get_custom_posts('anime','anime_cat','アニメ'); ?>
-              <?php //shard_get_custom_posts('anime','anime_cat','アニメ'); ?>
+              <?php //News
+                narsada_get_custom_posts();
+              ?>
+            </article>
+
+            <article class="front-infomation">
+              <?php
+                // アニメ
+                narsada_get_custom_posts('anime','anime_cat','アニメ');
+              ?>
+            </article>
+
+            <article class="front-infomation">
+                <?php
+                // ブログ
+                narsada_get_posts();
+              ?>
             </article>
 
           </main>
 
           <aside class="front-aside--postList">
             <h3 class="front-aside__title">更新履歴</h3>
-            <?php shard_frontPage_posts_list(); ?>
+            <?php narsada_get_posts_all(); ?>
           </aside>
         </div> <!-- #content-inner -->
 

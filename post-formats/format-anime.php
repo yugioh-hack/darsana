@@ -14,24 +14,24 @@
                 */
               ?>
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class('singlePost--article'); ?> role="article" itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
+              <article id="post-<?php the_ID(); ?>" <?php post_class('singlePost-article'); ?> role="article" itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
 
-                <header class="singlePost--header">
-                  <p class="singlePost--byline">
+                <header class="singlePost-header">
+                  <p class="singlePost-byline">
                     <?php printf(
                        /* the time the post was published */
-                       '<time class="singlePost--byline__updated" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>' //,
+                       '<time class="singlePost-byline__updated" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>' //,
                        /* the author of the post */
                        //'<span class="singlePost--byline__author" itemprop="author" itemscope itemptype="https://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
                     ) ; ?>
 
                   </p>
-                  <h1 class="singlePost--title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
+                  <h1 class="singlePost-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
                   <?php sns_share_button(); ?>
 
                 </header> <?php // singlePost--header ?>
 
-                <section class="content singlePost--content" itemprop="articleBody">
+                <section class="content singlePost-content" itemprop="articleBody">
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();
@@ -57,7 +57,7 @@
                   ?>
                 </section> <?php // singlePost--content ?>
 
-                <footer class="singlePost--footer">
+                <footer class="singlePost-footer">
                   <?php narsada_qa_related_posts(); ?>
                   <?php shard_singlePost_footer_term(); ?>
                   <?php custom_prev_next(); ?>

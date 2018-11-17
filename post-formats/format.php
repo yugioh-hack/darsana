@@ -14,14 +14,14 @@
                 */
               ?>
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class('singlePost_article'); ?> role="article" itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
+              <article id="post-<?php the_ID(); ?>" <?php post_class('singlePost-article'); ?> role="article" itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
 
-                <header class="singlePost_header">
+                <header class="singlePost-header">
                   <?php narsada_single_meta() ?>
-                  <h1 class="singlePost_title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
+                  <h1 class="singlePost-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
                 </header> <?php // end article header ?>
 
-                <section class="content singlePost_content" itemprop="articleBody">
+                <section class="content singlePost-content" itemprop="articleBody">
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();
@@ -47,7 +47,7 @@
                   ?>
                 </section> <?php // end article section ?>
 
-                <footer class="singlePost_footer">
+                <footer class="singlePost-footer">
                   <?php shard_singlePost_footer_term(); ?>
                   <?php custom_prev_next(); ?>
                   <?php //the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
