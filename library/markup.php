@@ -46,8 +46,8 @@ if(! function_exists('shard_hero')) {
     endif;
 
     $hero_widget  = '<div class="common-hero--widget">';
-    $hero_widget .= '<a class="common-hero--widget__button" href="https://ingress.com/">Ingress 公式ページ</a>';
-    $hero_widget .= '<a class="common-hero--widget__button" href="https://support.ingress.com/hc/ja">Ingress Helpページ</a>';
+    //$hero_widget .= '<a class="common-hero--widget__button" href="https://ingress.com/">Ingress 公式ページ</a>';
+    //$hero_widget .= '<a class="common-hero--widget__button" href="https://support.ingress.com/hc/ja">Ingress Helpページ</a>';
     $hero_widget .= '<a class="common-hero--widget__button" href="https://www.reddit.com/r/IngressPrimeFeedback/">Reddit / IngressPrimeFeedback</a>';
     $hero_widget .= '</div>';
 
