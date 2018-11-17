@@ -18,7 +18,7 @@ if(! function_exists('narsada_get_posts_all')) {
     $posts_array = get_posts( $args );
     $posts_list_item = '<ul>';
     foreach ( $posts_array as $post ) : setup_postdata( $post ) ;
-      $posts_list_item .= '<li class="front-aside--postList__item"><a href="'. get_the_permalink($post->ID).'">'. get_the_title($post->ID). '</a><time class="front-aside--postList__time">'.get_the_modified_date('',$post->ID).'</time></li>';
+      $posts_list_item .= '<li class="front-aside--postList__item"><a href="'. get_the_permalink($post->ID).'">'. narsada_title_limit(get_the_title($post->ID)). '</a><time class="front-aside--postList__time">'.get_the_modified_date('',$post->ID).'</time></li>';
     endforeach; wp_reset_postdata();
     $posts_list_item .= '</ul>';
 
@@ -77,7 +77,7 @@ if(! function_exists('narsada_get_posts')) {
     if( $getPosts ) :
       foreach( $getPosts as $post ) : setup_postdata( $post );
         $term = wp_get_post_terms($post->ID,$default_taxonomy); //投稿IDからtermを配列として取得
-        echo '<li class="front-infomation__listItem"><span class="front-infomation__listIcon">' . strtoupper($term[0]->name) . '</span><a href="'. get_permalink($post ->ID).'">'.get_the_title($post->ID).'</a></li>';
+        echo '<li class="front-infomation__listItem"><span class="front-infomation__listIcon">' . strtoupper($term[0]->name) . '</span><a href="'. get_permalink($post ->ID).'">'.narsada_title_limit(get_the_title($post->ID)).'</a></li>';
       endforeach;
     else:
       echo '<li><p>記事はまだありません。</p></li>';
@@ -114,7 +114,7 @@ if(! function_exists('narsada_get_custom_posts')) {
     if( $customPosts ) :
       foreach( $customPosts as $post ) : setup_postdata( $post );
         $term = wp_get_post_terms($post->ID,$default_taxonomy); //投稿IDからtermを配列として取得
-        echo '<li class="front-infomation__listItem"><span class="front-infomation__listIcon">' . strtoupper($term[0]->slug) . '</span><a href="'. get_permalink($post ->ID).'">'.get_the_title($post->ID).'</a></li>';
+        echo '<li class="front-infomation__listItem"><span class="front-infomation__listIcon">' . strtoupper($term[0]->slug) . '</span><a href="'. get_permalink($post ->ID).'">'.narsada_title_limit(get_the_title($post->ID)).'</a></li>';
       endforeach;
     else:
       echo '<li><p>記事はまだありません。</p></li>';

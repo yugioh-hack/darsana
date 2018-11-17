@@ -208,3 +208,15 @@ add_filter( 'get_the_archive_title', function ($title) {
   endif;
     return $title;
 });
+
+// titleを丸める
+if(!function_exists('narsada_title_limit')) {
+  function narsada_title_limit($get_post_title) {
+    if(mb_strlen($get_post_title, 'UTF-8')>55){
+      $title= mb_substr($get_post_title, 0, 55, 'UTF-8');
+      return $title.'……';
+    }else{
+      return $get_post_title;
+    }
+  }
+}
